@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" conten    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1ERo0BZlK" crossorigin="anonymous"></script>
+    <script>
+        // Hide webkit scrollbars for all iframes
+        const style = document.createElement('style');
+        style.textContent = `
+            iframe::-webkit-scrollbar { 
+                display: none !important; 
+                width: 0 !important; 
+                height: 0 !important; 
+            }
+            iframe {
+                scrollbar-width: none !important;
+                -ms-overflow-style: none !important;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
+    <title>Vrithm - Your Music Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInLeft { from { transform: translateX(-50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideInRight { from { transform: translateX(50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+    </style>
+</head>
+<body style="overflow-y: hidden;">
+    <div class="d-flex center mx-auto relative justify-content-center align-items-center" style="height: 100vh; width: 100vw; overflow: hidden;">
+
+        <img style="position: absolute; width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16/9; z-index: 0; filter: blur(5px); animation: fadeIn 1s ease-in-out;" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920&h=1080&fit=crop&crop=center&auto=format&q=80" alt="Background">
+        
+        <div class="d-flex justify-content-center flex-column" style="width: 100%;">
+            
+            <div class="d-flex justify-content-start rounded-5 relative" style="height: 95vh; width: 98vw; z-index: 1; margin: 0 auto; animation: fadeIn 1s ease-in-out;">
+                
+                <div class="d-flex justify-content-start rounded-5 absolute" style="height: 95vh; width: 98vw; z-index: 1; margin: 0 auto; animation: fadeIn 1s ease-in-out; -webkit-backdrop-filter: blur(90px); backdrop-filter: blur(90px); background: rgba(0, 0, 0, 0.4); ">
+                    
+                    <div class="d-flex flex-column justify-content-start align-items-center" style="border-radius: 1.5rem; margin-top: 0; padding: 30px 20px; color: white; text-align: center; width: 230px; height: 100%; animation: slideInLeft 0.6s ease-out;">
+                        <div class="d-flex align-items-center mb-5 me-3 mt-3">
+                            <span class="fs-4 fw-bold">Vrithm</span>
+                        </div>
+                        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link active d-flex align-items-center mb-2" style="color: white; border-radius: 10px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" id="v-pills-browse-tab" data-bs-toggle="pill" data-bs-target="#v-pills-browse" type="button" role="tab" aria-controls="v-pills-browse" aria-selected="true">
+                                <i class="bi bi-collection-play me-2"></i>Browse
+                            </a>
+                            <a class="nav-link d-flex align-items-center mb-2" style="color: lightgray; border-radius: 10px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" id="v-pills-explore-tab" data-bs-toggle="pill" data-bs-target="#v-pills-explore" type="button" role="tab" aria-controls="v-pills-explore" aria-selected="false">
+                                <i class="bi bi-compass me-2"></i>Explore
+                            </a>
+                            <a class="nav-link d-flex align-items-center mb-2" style="color: lightgray; border-radius: 10px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" id="v-pills-playlists-tab" data-bs-toggle="pill" data-bs-target="#v-pills-playlists" type="button" role="tab" aria-controls="v-pills-playlists" aria-selected="false">
+                                <i class="bi bi-music-note-list me-2"></i>Playlists
+                            </a>
+                            <a class="nav-link d-flex align-items-center mb-2" style="color: lightgray; border-radius: 10px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+                                <i class="bi bi-person me-2"></i>Profile
+                            </a>
+                            <a class="nav-link d-flex align-items-center" style="color: lightgray; border-radius: 10px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+                                <i class="bi bi-gear me-2"></i>Settings
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="tab-content rounded-5" id="v-pills-tabContent" style="height: 95vh; width: 98vw; z-index: 1; background-color: white; overflow: hidden; border-radius: 1.5rem; position: relative; animation: slideInRight 0.6s ease-out;">
+                        <div class="tab-pane fade show active" id="v-pills-browse" style="height: 70vh; width: 100%;">
+                            <iframe class="rounded-5" id="v-pills-home" src="browse.html" scrolling="auto" style="padding: 10px; border: none; height: 120%; width: 100%; scrollbar-width: none; -ms-overflow-style: none; transition: opacity 0.3s ease-in-out;" title="Browse Music Content"></iframe>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="v-pills-profile" style="height: 70vh; width: 100%;">
+                            <iframe class="rounded-5" src="profile.html" scrolling="auto" style="padding: 10px; border: none; height: 120%; width: 100%; scrollbar-width: none; -ms-overflow-style: none; transition: opacity 0.3s ease-in-out;" title="Profile Content"></iframe>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="v-pills-explore" style="height: 70vh; width: 100%;">
+                            <iframe class="rounded-5" src="explore.html" scrolling="auto" style="padding: 10px; border: none; height: 120%; width: 100%; scrollbar-width: none; -ms-overflow-style: none; transition: opacity 0.3s ease-in-out;" title="Explore Content"></iframe>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="v-pills-playlists" style="height: 70vh; width: 100%;">
+                            <iframe class="rounded-5" src="playlists.html" scrolling="auto" style="padding: 10px; border: none; height: 120%; width: 100%; scrollbar-width: none; -ms-overflow-style: none; transition: opacity 0.3s ease-in-out;" title="Playlists Content"></iframe>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="v-pills-settings" style="height: 70vh; width: 100%;">
+                            <iframe class="rounded-5" src="settings.html" scrolling="auto" style="padding: 10px; border: none; height: 120%; width: 100%; scrollbar-width: none; -ms-overflow-style: none; transition: opacity 0.3s ease-in-out;" title="Settings Content"></iframe>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Now Playing Music Bar - Centered on entire screen -->
+            <div class="d-flex align-items-center justify-content-between px-3 py-2" style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); height: 70px; width: 40vw; z-index: 100; background: rgba(0, 0, 0, 0.4); -webkit-backdrop-filter: blur(90px); backdrop-filter: blur(90px); border-radius: 20px; animation: fadeIn 1s ease-in-out;">
+                <div class="d-flex align-items-center">
+                    <img src="assets\images\l2.jpeg" alt="Album Art - Snowfall" class="img-fluid rounded-2 me-3" style="width: 40px; height: 40px; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <div class="d-flex flex-column">
+                        <span class="small text-light-emphasis" style="font-size: 10px; color: lightgray;">Oneheart</span>
+                        <span class="text-white" style="font-size: 14px; color: white;">Snowfall</span>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center flex-grow-1 mx-4">
+                    <div class="d-flex align-items-center me-3">
+                        <i class="bi bi-skip-start-fill text-white" style="transition: filter 0.3s ease;" onmouseover="this.style.filter='brightness(1.2)'" onmouseout="this.style.filter='brightness(1)'"></i>
+                        <button class="btn rounded-circle d-flex align-items-center justify-content-center mx-2" style="width: 30px; height: 30px; background-color: yellow; margin-left: 10px; margin-right: 10px; animation: pulse 2s infinite;" title="Play/Pause">
+                            <i class="bi bi-pause-fill"></i>
+                        </button>
+                        <i class="bi bi-skip-end-fill text-white" style="transition: filter 0.3s ease;" onmouseover="this.style.filter='brightness(1.2)'" onmouseout="this.style.filter='brightness(1)'"></i>
+                    </div>
+                    <div class="progress flex-grow-1 bg-dark" style="height: 4px; border-radius: 10px;">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" title="Track Progress"></div>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center text-white" style="gap: 20px; font-size: 12px;">
+                    <span class="text-light-emphasis" style="color: lightgray;">03:12</span>
+                    <i class="bi bi-shuffle" style="transition: filter 0.3s ease;" onmouseover="this.style.filter='brightness(1.2)'" onmouseout="this.style.filter='brightness(1)'"></i>
+                    <i class="bi bi-music-note-list" style="transition: filter 0.3s ease;" onmouseover="this.style.filter='brightness(1.2)'" onmouseout="this.style.filter='brightness(1)'"></i>
+                    <i class="bi bi-volume-up-fill" style="transition: filter 0.3s ease;" onmouseover="this.style.filter='brightness(1.2)'" onmouseout="this.style.filter='brightness(1)'"></i>
+                </div>
+            </div>
+
+        </div>
+    
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+</body>
+</html>

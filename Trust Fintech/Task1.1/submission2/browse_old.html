@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <div class="mx-auto d-flex" style="width: 100%; height: 100%; justify-content: center; align-items: center; flex-direction: column;">
+        
+        <nav class="navbar navbar-expand-lg" style="width: 90%; margin-top: 20px; margin-bottom: 20px;">
+            <div class="container-fluid" style="gap: 10px;">
+                <a class="" href="#" style="color: gray; text-decoration: none;">Artists</a>
+                <i class="bi bi-chevron-right"></i>
+                <a class="" href="#" style="color: black; text-decoration: none;">Top 2023</a>
+                <div class="d-flex justify-content-center" style="gap: 10px;">
+
+                </div>
+                <div class="collapse navbar-collapse d-flex justify-content-lg-end" id="navbarSupportedContent" style="gap: 15px;">
+                    <p>
+
+                    </p>
+                    <a id="settings">
+                        <i class="bi bi-gear"></i>
+                    </a>
+                    <a id="notification">
+                        <i class="bi bi-bell"></i>
+                    </a>
+                    <a id="profile" href="#">
+                        <img src="assets/images/profile.JPG" height="30px" width="30px" class="rounded-circle" style="">
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="d-flex justify-content-center align-items-top" style="width: 89%; max-height: 100%;">
+            <div class="d-flex" id="scrollableContent" style="width: 60%; flex-direction: column; overflow-y: auto; height: 100%; max-height: 100vh; padding-right: 10px; scrollbar-width: none; -ms-overflow-style: none;">
+                
+                <div class="d-flex card rounded-5" style=" height: 200px; width: 600px; color: white; border: none;" onclick="location.href='browse.html'">
+                    <img src="assets/images/p1.png" class="card-img rounded-5" alt="..."  style="height: 100%; width: 100%; object-fit: cover;">
+                    <div class="d-flex card-img-overlay justify-content-center" style="margin-left: 30px; max-height: 100%; flex-direction: column;">
+                        <p class="" style="font-size: small; color: white; font-weight: 500;">CURATED PLAYLIST</p>
+                        <h4 class="card-title" style="font-weight: 700;">BLINDING LIGHT</h4>
+                        <p class="card-text" style="font-size: smaller;">Enjoy vivid emotions with this stunning<br>music album. Each track is a story.</p>
+                        <div class="d-flex align-items-center" style="max-height: 30px;">
+                            <div class="d-flex" style="">
+                                <div class="d-flex align-items-center justify-content-center" style="width: 25px; height: 25px; backdrop-filter: blur(90px); background: rgba(255, 255, 255, 0.4); border-radius: 20%;">
+                                    <i class="fa fa-heart" style="font-size:13px; color:white"></i>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center m-2" style="color: white; font-size: 20px; flex-direction: column;">
+                                <a style="font-size: small; font-weight: 600;">83,012 Likes</a>
+                            </div>
+                            <div class="d-flex justify-content-center m-1" style="color: white; flex-direction: column;">
+                                <i class="fa fa-circle" style="font-size:4px; color:white"></i>
+                            </div>
+                            <div class="d-flex justify-content-center m-2" style="color: white; font-size: 20px; flex-direction: column;">
+                                <a style="font-size: small; font-weight: 300;">18 Songs, 39 min 43 sec</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+
+                <div style="margin-top: 30px;">
+                    <div class="d-flex justify-content-between align-items-center mb-3" style="width: 600px">
+                        <h4>Popular artists</h4>
+                        <a href="#" class="" style="color: gray; text-decoration: none;">See all</a>
+                    </div>
+                    <div class="d-flex" style="width: 600px; justify-content: space-between;">
+                        <div class="d-flex text-center" style="flex-direction: column;">  
+                            <a href="#">
+                                <img src="assets/album-images/a1.jpg" style="width: 110px; height: 110px; border-radius: 50%; background: #ddd; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; overflow: hidden;">
+                            </a>
+                            <div class="">The Creator</div>
+                        </div>
+                        <div class="d-flex text-center" style="flex-direction: column;">
+                            <a href="#">
+                                <img src="assets/album-images/a2.jpg" style="width: 110px; height: 110px; border-radius: 50%; background: #ddd; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; overflow: hidden;">
+                            </a>
+                            <div class="">21 Savage</div>
+                        </div>
+                        <div class="d-flex text-center" style="flex-direction: column;">
+                            <a href="#">
+                                <img src="assets/album-images/a3.jpg" style="width: 110px; height: 110px; border-radius: 50%; background: #ddd; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; overflow: hidden;">
+                            </a>
+                            <div class="">6ix9ine</div>
+                        </div>
+                        <div class="d-flex text-center" style="flex-direction: column;">
+                            <a href="#">
+                                <img src="assets/album-images/a4.jpg" style="width: 110px; height: 110px; border-radius: 50%; background: #ddd; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; overflow: hidden;">
+                            </a>
+                            <div class="">Travis Scott</div>
+                        </div>
+                        <div class="d-flex text-center" style="flex-direction: column;">
+                            <a href="#">
+                                <img src="assets/album-images/a5.jpg" style="width: 110px; height: 110px; border-radius: 50%; background: #ddd; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; overflow: hidden;">
+                            </a>
+                            <div class="">OBLADAET</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3" style="width: 600px;">
+                        <h4>Recently Played</h4>
+                        <a href="#" class="text-muted text-decoration-none">See all</a>
+                    </div>
+                    
+                    <div class="list-group" style="width: 600px;">
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <img src="assets/album-images/a8.jpeg" alt="Album Art" class="rounded" style="width: 50px; height: 50px; object-fit: cover; margin-right: 15px;">
+                                <div>
+                                <div>Mr. Right Now</div>
+                                <small class="text-muted">Metro Boomin</small>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <small class="me-3">3:21</small>
+                                <button class="btn p-0"><i class="bi bi-plus-lg"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <img src="assets/album-images/a9.jpeg" alt="Album Art" class="rounded" style="width: 50px; height: 50px; object-fit: cover; margin-right: 15px;">
+                                <div>
+                                <div>Many Men</div>
+                                <small class="text-muted">21 Savage</small>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <small class="me-3">2:29</small>
+                                <button class="btn p-0"><i class="bi bi-plus-lg"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="flex-grow-1">
+                
+            </div>
+            <div class="d-flex rounded-5 align-items-center align-self-right" style="height: 600px; width: 300px; background-color: rgb(239,239,239); flex-direction: column; font-family: Arial, sans-serif; padding: 20px;">
+
+                <div class="d-flex align-items-center w-100 mb-2" style="font-weight: 400; font-size: 14px; color: #333;">
+                    <img src="assets/icons/wave.svg" height="40px">
+                    <p style="margin-top: 18px; margin-left: 20px;">Now Playing</p>
+                </div>
+
+                <img src="assets/images/l2.jpeg" class="rounded-5 mb-3" style="height: 250px; width: 250px; object-fit: cover;">
+
+                <div class="w-100" style="font-size: 16px; font-weight: bold; color: #222;">Snowfall</div>
+                <div class="w-100 mb-2" style="font-size: 13px; color: #777;">Oneheart</div>
+
+                <hr class="w-100" style="border: none; border-top: 1px solid #ddd; margin: 10px 0;">
+
+                <div class="w-100 d-flex align-items-center mb-3">
+                    <img src="assets/images/l1.jpg" style="height: 40px; width: 40px; border-radius: 10px; object-fit: cover; margin-right: 10px;">
+                    <div class="flex-grow-1">
+                    <div style="font-size: 14px; font-weight: 500; color: #333;">Therapy</div>
+                    <div style="font-size: 12px; color: #888;">Oneheart</div>
+                    </div>
+                    <div style="font-size: 12px; color: #999;">2:02</div>
+                </div>
+
+                <div class="w-100 d-flex align-items-center mb-3">
+                    <img src="assets/album-images/a6.jpeg" style="height: 40px; width: 40px; border-radius: 10px; object-fit: cover; margin-right: 10px;">
+                    <div class="flex-grow-1">
+                    <div style="font-size: 14px; font-weight: 500; color: #333;">Apathy</div>
+                    <div style="font-size: 12px; color: #888;">Tezce</div>
+                    </div>
+                    <div style="font-size: 12px; color: #999;">2:02</div>
+                </div>
+
+                <div class="w-100 d-flex align-items-center">
+                    <img src="assets/album-images/a7.jpeg" style="height: 40px; width: 40px; border-radius: 10px; object-fit: cover; margin-right: 10px;">
+                    <div class="flex-grow-1">
+                    <div style="font-size: 14px; font-weight: 500; color: #333;">Look I'm here</div>
+                    <div style="font-size: 12px; color: #888;">Oneheart</div>
+                    </div>
+                    <div style="font-size: 12px; color: #999;">2:02</div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <script>
+        // Hide webkit scrollbars
+        document.getElementById('scrollableContent').style.cssText += '; -webkit-scrollbar: none !important;';
+        // Add CSS dynamically for webkit scrollbar hiding
+        const style = document.createElement('style');
+        style.textContent = '#scrollableContent::-webkit-scrollbar { display: none !important; width: 0 !important; }';
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

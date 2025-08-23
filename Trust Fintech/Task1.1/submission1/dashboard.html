@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+<body style="overflow-y: hidden;">
+    <div class="d-flex center mx-auto relative justify-content-center align-items-center" style="height: 100vh; width: 100vw;">
+
+        <img class="" style="width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16/9; z-index: 0; position: absolute; filter: blur(5px);" src="assets/images/background.jpeg" alt="Logo" class="img-fluid mx-auto d-block my-4" style="max-width: 200px;">
+        
+        <div class="d-flex justify-content-center" style="flex-direction: column;">
+            
+            <div class="d-flex justify-content-lg-start rounded-5 relative" style="height: 80vh; width: 70vw; z-index: 1; background-color: black; backdrop-filter: blur(90px); background: rgba(0, 0, 0, 0.4)">
+                
+                <ul class="d-flex nav mx-auto flex-column justify-content-lg-start" style="margin-top: 50px; color: white; text-align: center;">
+                    <a>Library</a>
+                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="text-align: left; margin-top: 20px; color: white;">
+                        <a class="nav-link active" id="v-pills-browse-tab" data-bs-toggle="pill" data-bs-target="#v-pills-browse" type="button" role="tab" aria-controls="v-pills-browse" aria-selected="true" style="color: lightgray;">Browse</a>
+                        <a class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false" style="color: lightgray;">Profile</a>
+                        <a class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false" style="color: lightgray;">Messages</a>
+                        <a class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false" style="color: lightgray;">Settings</a>
+                        <a class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false" style="color: lightgray;">Settings</a>
+                    </div>
+                </ul>
+
+                <div class="tab-content rounded-5" id="v-pills-tabContent" style="height: 80vh; width: 60vw; z-index: 1; background-color: white;"> 
+                    <div class="tab-pane fade show active" id="v-pills-browse" style="height: 70vh; width: 100%;">
+                        <iframe class="tab-pane mx-auto fade show active rounded-5" id="v-pills-home"  src="browse.html" height="115%" width="100%" scrolling="no" style="padding: 10px;"></iframe>
+                    </div>
+                    <div class="tab-pane" id="v-pills-profile" style="height: 70vh; width: 100%;">
+                        <iframe class="tab-pane mx-auto fade show active rounded-5" id="v-pills-profile"  src="browse.html" height="110%" width="100%" scrolling="no"></iframe>
+                    </div>
+                    <div class="tab-pane" id="v-pills-messages" style="height: 70vh; width: 100%;">
+                        <iframe class="tab-pane mx-auto fade show active rounded-5" id="v-pills-messages"  src="browse.html" height="110%" width="100%" scrolling="no"></iframe>
+                    </div>
+                    <div class="tab-pane" id="v-pills-settings" style="height: 70vh; width: 100%;">
+                        <iframe class="tab-pane mx-auto fade show active rounded-5" id="v-pills-settings"  src="browse.html" height="110%" width="100%" scrolling="no"></iframe>
+                    </div>
+                    <div class="tab-pane" id="v-pills-settings" style="height: 70vh; width: 100%;">
+                        <iframe class="tab-pane mx-auto fade show active rounded-5" id="v-pills-settings"  src="browse.html" height="110%" width="100%" scrolling="no"></iframe>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between px-3 py-2 mt-5 mx-auto" style="height: 70px; width: 40vw; z-index: 1; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(90px); border-radius: 20px;">
+            <div class="d-flex align-items-center">
+                <img src="assets/images/l2.jpeg" alt="Album" class="img-fluid rounded-2 me-3" style="width: 40px; height: 40px; object-fit: cover;">
+                    <div class="d-flex flex-column">
+                        <a style="font-size: 10px; color: lightgray;">Oneheart</a>
+                        <a style="font-size: 14px; color: white;">Snowfall</a>
+                    </div>
+            </div>
+            <div class="d-flex align-items-center flex-grow-1 mx-4">
+                <div class="d-flex" style="align-items: center; margin-right: 20px;">
+                    <i class="bi bi-skip-start-fill" style="color: white;"></i>
+                    <button class="btn rounded-circle d-flex align-items-center justify-content-center" style="width: 30px; height: 30px; background-color: yellow; margin-left: 10px; margin-right: 10px;">
+                        <i class="bi bi-pause-fill"></i>
+                    </button>
+                    <i class="bi bi-skip-end-fill" style="color: white;"></i>
+                </div>
+                <div class="progress flex-grow-1" style="height: 4px; border-radius: 10px;">
+                    <div class="progress-bar" role="progressbar" style="width: 100px; background-color: yellow;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="d-flex align-items-center" style="color: white; gap: 20px; font-size: 12px;">
+                <span style="color: lightgray;">03:12</span>
+                <i class="bi bi-shuffle"></i>
+                <i class="bi bi-music-note-list"></i>
+                <i class="bi bi-volume-up-fill"></i>
+            </div>
+            </div>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+        </div>
+    
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+</body>
+</html>

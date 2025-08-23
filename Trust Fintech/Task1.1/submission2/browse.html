@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Browse - Vrithm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes slideInLeft { from { transform: translateX(-50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        
+        /* Mobile responsive adjustments */
+        @media (max-width: 991.98px) {
+            .fixed-sidebar {
+                position: relative !important;
+                right: 0 !important;
+                top: 0 !important;
+                width: 100% !important;
+                height: auto !important;
+                margin-top: 1rem;
+            }
+            .main-content {
+                padding-right: 8px !important;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .main-content {
+                padding-right: 340px !important; /* Make room for fixed sidebar */
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; overflow-x: hidden;">
+    <nav class="fixed-top" aria-label="breadcrumb" style="animation: fadeIn 1s; padding: 8px 16px; background: #ffffff; z-index: 1030;">
+        <ol class="breadcrumb mb-0" style="background: transparent; padding: 8px 12px;">
+            <li class="breadcrumb-item">
+                <a href="#" style="color: #6c757d; text-decoration: none; font-size: 14px;">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#" style="color: #6c757d; text-decoration: none; font-size: 14px;">Browse</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page" style="color: #212529; font-size: 14px; font-weight: 500;">
+                Popular Music
+            </li>
+            <li class="ms-auto">
+                <div class="d-flex align-items-center" style="gap: 12px;">
+                    
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary rounded-circle position-relative" style="width: 32px; height: 32px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-bell" style="font-size: 12px;"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger pulse" style="font-size: 8px; padding: 2px 4px; animation: pulse 2s infinite;">3</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0" style="width: 340px; max-height: 420px; overflow-y: auto; border-radius: 12px; padding: 0; margin-top: 8px; animation: fadeIn 0.3s ease;">
+                            <li><h6 class="dropdown-header bg-warning text-dark mb-0 d-flex justify-content-between align-items-center" style="padding: 16px 20px; border-radius: 12px 12px 0 0; font-weight: 600; font-size: 14px;">
+                                Notifications 
+                                <span class="badge bg-danger rounded-pill ms-2" style="font-size: 10px;">3</span>
+                            </h6></li>
+                            <li>
+                                <div class="dropdown-item-text border-bottom" style="padding: 16px 20px; border-color: #f8f9fa !important;">
+                                    <div class="d-flex align-items-center">
+                                        <div class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                            <i class="bi bi-music-note text-primary" style="font-size: 18px;"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="fw-semibold" style="font-size: 13px; color: #333;">New song added to your playlist</div>
+                                            <small class="text-muted">2 minutes ago</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-secondary rounded-circle ms-2" style="width: 28px; height: 28px; font-size: 12px; line-height: 1;">×</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="dropdown-item-text border-bottom" style="padding: 16px 20px; border-color: #f8f9fa !important;">
+                                    <div class="d-flex align-items-center">
+                                        <div class="rounded-circle bg-danger bg-opacity-10 d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                            <i class="bi bi-heart-fill text-danger" style="font-size: 18px;"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="fw-semibold" style="font-size: 13px; color: #333;">Someone liked your playlist</div>
+                                            <small class="text-muted">1 hour ago</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-secondary rounded-circle ms-2" style="width: 28px; height: 28px; font-size: 12px; line-height: 1;">×</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="dropdown-item-text" style="padding: 16px 20px;">
+                                    <div class="d-flex align-items-center">
+                                        <div class="rounded-circle bg-success bg-opacity-10 d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                            <i class="bi bi-download text-success" style="font-size: 18px;"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <div class="fw-semibold" style="font-size: 13px; color: #333;">Download completed</div>
+                                            <small class="text-muted">3 hours ago</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-secondary rounded-circle ms-2" style="width: 28px; height: 28px; font-size: 12px; line-height: 1;">×</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><hr class="dropdown-divider my-0" style="margin: 0 !important; border-color: #e9ecef;"></li>
+                            <li><a class="dropdown-item text-center py-3" href="#" style="color: #6c757d; font-size: 13px; font-weight: 500;">View All Notifications</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </nav>
+
+    <div class="container-fluid" style="padding: 8px; max-width: 100%; margin: 0; margin-top: 70px;">
+
+        <div class="row" style="">
+            <div class="col-lg-9 col-md-12" style="padding: 5px 8px; margin-left: 15px;">
+                
+                <div class="card text-white border-0 rounded-4 mb-4" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('assets/images/p1.png'); background-size: cover; background-position: center; height: 280px; animation: slideInUp 0.5s;">
+                    <div class="card-body d-flex align-items-end" style="padding: 24px;">
+                        <div class="row w-100 align-items-end">
+                            <div class="col-md-8">
+                                <span class="badge bg-warning text-dark mb-2" style="font-size: 11px; padding: 4px 8px;">CURATED PLAYLIST</span>
+                                <h1 class="display-6 fw-bold mb-2" style="font-size: 2.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">BLINDING LIGHTS</h1>
+                                <p class="mb-3" style="font-size: 15px; color: rgba(255,255,255,0.9); text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Enjoy vivid emotions with this stunning music album. Each track tells a unique story that will captivate your soul.</p>
+                                <div class="d-flex align-items-center" style="gap: 16px;">
+                                    <button class="btn btn-primary btn-sm rounded-pill d-flex align-items-center" style="padding: 6px 12px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                        <i class="bi bi-play-fill me-1"></i> Play Now
+                                    </button>
+                                    <button class="btn btn-outline-light btn-sm rounded-circle" style="width: 36px; height: 36px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                                        <i class="bi bi-heart" style="font-size: 14px;"></i>
+                                    </button>
+                                    <span class="text-light" style="font-size: 13px; font-weight: 500;">83,012 Likes</span>
+                                    <span style="color: rgba(255,255,255,0.6);">•</span>
+                                    <span class="text-light" style="font-size: 13px;">18 Songs, 39 min 43 sec</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3" style="padding: 0 8px;">
+                        <h4 class="mb-0" style="font-size: 1.4rem; font-weight: 600; animation: fadeIn 1s;">Popular Artists</h4>
+                        <a href="#" class="text-muted text-decoration-none" style="font-size: 14px; transition: color 0.3s ease;" onmouseover="this.style.color='#0d6efd'" onmouseout="this.style.color='#6c757d'">See all</a>
+                    </div>
+                    <div class="row" style="margin: 0 4px;">
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center mb-3" style="animation: slideInUp 0.5s; animation-delay: 0.1s; padding: 4px;">
+                            <div style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <img src="assets\album-images\a1.jpg" class="rounded-circle mb-2 shadow-sm" alt="The Creator" style="width: 90px; height: 90px; object-fit: cover; border: 3px solid #fff;">
+                                <h6 class="mb-1" style="font-size: 14px; font-weight: 500;">The Creator</h6>
+                                <small class="text-muted" style="font-size: 12px;">Artist</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center mb-3" style="animation: slideInUp 0.5s; animation-delay: 0.2s; padding: 4px;">
+                            <div style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <img src="assets\album-images\a2.jpg" class="rounded-circle mb-2 shadow-sm" alt="21 Savage" style="width: 90px; height: 90px; object-fit: cover; border: 3px solid #fff;">
+                                <h6 class="mb-1" style="font-size: 14px; font-weight: 500;">21 Savage</h6>
+                                <small class="text-muted" style="font-size: 12px;">Artist</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center mb-3" style="animation: slideInUp 0.5s; animation-delay: 0.3s; padding: 4px;">
+                            <div style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <img src="assets\album-images\a3.jpg" class="rounded-circle mb-2 shadow-sm" alt="Artist" style="width: 90px; height: 90px; object-fit: cover; border: 3px solid #fff;">
+                                <h6 class="mb-1" style="font-size: 14px; font-weight: 500;">6ix9ine</h6>
+                                <small class="text-muted" style="font-size: 12px;">Artist</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center mb-3" style="animation: slideInUp 0.5s; animation-delay: 0.4s; padding: 4px;">
+                            <div style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <img src="assets\album-images\a4.jpg" class="rounded-circle mb-2 shadow-sm" alt="Artist" style="width: 90px; height: 90px; object-fit: cover; border: 3px solid #fff;">
+                                <h6 class="mb-1" style="font-size: 14px; font-weight: 500;">Travis Scott</h6>
+                                <small class="text-muted" style="font-size: 12px;">Artist</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center mb-3" style="animation: slideInUp 0.5s; animation-delay: 0.5s; padding: 4px;">
+                            <div style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <img src="assets\album-images\a5.jpg" class="rounded-circle mb-2 shadow-sm" alt="OBLADAET" style="width: 90px; height: 90px; object-fit: cover; border: 3px solid #fff;">
+                                <h6 class="mb-1" style="font-size: 14px; font-weight: 500;">OBLADAET</h6>
+                                <small class="text-muted" style="font-size: 12px;">Artist</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center mb-3" style="animation: slideInUp 0.5s; animation-delay: 0.6s; padding: 4px;">
+                            <div style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                                <img src="assets\album-images\a6.jpg" class="rounded-circle mb-2 shadow-sm" alt="Oneheart" style="width: 90px; height: 90px; object-fit: cover; border: 3px solid #fff;">
+                                <h6 class="mb-1" style="font-size: 14px; font-weight: 500;">Oneheart</h6>
+                                <small class="text-muted" style="font-size: 12px;">Artist</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3" style="padding: 0 8px;">
+                        <h4 class="mb-0" style="font-size: 1.4rem; font-weight: 600; animation: fadeIn 1s;">Recently Played</h4>
+                        <a href="#" class="text-muted text-decoration-none" style="font-size: 14px; transition: color 0.3s ease;" onmouseover="this.style.color='#0d6efd'" onmouseout="this.style.color='#6c757d'">See all</a>
+                    </div>
+                    
+                    <div class="card border-0 shadow-sm" style="border-radius: 12px; margin: 0 8px;">
+                        <div class="list-group list-group-flush">
+                            <div class="list-group-item d-flex justify-content-between align-items-center border-0" style="padding: 16px 20px; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#f8f9fa'" onmouseout="this.style.backgroundColor='transparent'">
+                                <div class="d-flex align-items-center">
+                                    <img src="assets\images\l1.jpg" alt="Album" class="rounded me-3" style="width: 50px; height: 50px; object-fit: cover;">
+                                    <div>
+                                        <h6 class="mb-1" style="font-size: 15px; font-weight: 500;">Therapy</h6>
+                                        <small class="text-muted">Oneheart</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <small class="me-3 text-muted">2:29</small>
+                                    <button class="btn btn-sm btn-outline-primary rounded-circle" style="width: 32px; height: 32px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                                        <i class="bi bi-play-fill" style="font-size: 12px;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center border-0" style="padding: 16px 20px; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#f8f9fa'" onmouseout="this.style.backgroundColor='transparent'">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=300&h=300&fit=crop&crop=center&auto=format&q=80" alt="Album" class="rounded me-3" style="width: 50px; height: 50px; object-fit: cover;">
+                                    <div>
+                                        <h6 class="mb-1" style="font-size: 15px; font-weight: 500;">Apathy</h6>
+                                        <small class="text-muted">Tezce</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <small class="me-3 text-muted">3:15</small>
+                                    <button class="btn btn-sm btn-outline-primary rounded-circle" style="width: 32px; height: 32px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                                        <i class="bi bi-play-fill" style="font-size: 12px;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="list-group-item d-flex justify-content-between align-items-center border-0" style="padding: 16px 20px; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#f8f9fa'" onmouseout="this.style.backgroundColor='transparent'">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=300&h=300&fit=crop&crop=center&auto=format&q=80" alt="Album" class="rounded me-3" style="width: 50px; height: 50px; object-fit: cover;">
+                                    <div>
+                                        <h6 class="mb-1" style="font-size: 15px; font-weight: 500;">Look I'm Here</h6>
+                                        <small class="text-muted">Oneheart</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <small class="me-3 text-muted">2:02</small>
+                                    <button class="btn btn-sm btn-outline-primary rounded-circle" style="width: 32px; height: 32px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                                        <i class="bi bi-play-fill" style="font-size: 12px;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12" style="padding: 0 8px;">
+                <div class="d-flex justify-content-end">
+                    <div class="d-flex rounded-5 align-items-center fixed-sidebar" style="position: fixed; top: 70px; right: 20px; height: 580px; width: 320px; background-color: rgb(239,239,239); flex-direction: column; font-family: Arial, sans-serif; padding: 25px; animation: slideInLeft 0.6s; z-index: 1020;">
+
+                        <div class="d-flex align-items-center w-100 mb-3" style="font-weight: 400; font-size: 14px; color: #333;">
+                            <img src="assets/icons/wave.svg" height="40px">
+                            <p style="margin-top: 18px; margin-left: 20px;">Now Playing</p>
+                        </div>
+
+                        <img src="assets\images\l2.jpeg" class="rounded-5 mb-3" style="height: 220px; width: 220px; object-fit: cover;">
+
+                        <div class="w-100" style="font-size: 16px; font-weight: bold; color: #222;">Snowfall</div>
+                        <div class="w-100 mb-2" style="font-size: 13px; color: #777;">Oneheart</div>
+
+                        <hr class="w-100" style="border: none; border-top: 1px solid #ddd; margin: 10px 0;">
+
+                        <div class="w-100 d-flex align-items-center mb-3">
+                            <img src="assets\images\l1.jpg" style="height: 40px; width: 40px; border-radius: 10px; object-fit: cover; margin-right: 10px;">
+                            <div class="flex-grow-1">
+                                <div style="font-size: 14px; font-weight: 500; color: #333;">Therapy</div>
+                                <div style="font-size: 12px; color: #888;">Oneheart</div>
+                            </div>
+                            <div style="font-size: 12px; color: #999;">2:29</div>
+                        </div>
+
+                        <div class="w-100 d-flex align-items-center mb-3">
+                            <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=200&h=200&fit=crop&crop=center&auto=format&q=80" style="height: 40px; width: 40px; border-radius: 10px; object-fit: cover; margin-right: 10px;">
+                            <div class="flex-grow-1">
+                                <div style="font-size: 14px; font-weight: 500; color: #333;">Apathy</div>
+                                <div style="font-size: 12px; color: #888;">Tezce</div>
+                            </div>
+                            <div style="font-size: 12px; color: #999;">3:15</div>
+                        </div>
+
+                        <div class="w-100 d-flex align-items-center">
+                            <img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=200&h=200&fit=crop&crop=center&auto=format&q=80" style="height: 40px; width: 40px; border-radius: 10px; object-fit: cover; margin-right: 10px;">
+                            <div class="flex-grow-1">
+                                <div style="font-size: 14px; font-weight: 500; color: #333;">Look I'm Here</div>
+                                <div style="font-size: 12px; color: #888;">Oneheart</div>
+                            </div>
+                            <div style="font-size: 12px; color: #999;">2:02</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+    <script>
+        // Hide webkit scrollbars
+        const style = document.createElement('style');
+        style.textContent = `
+            body::-webkit-scrollbar, *::-webkit-scrollbar { 
+                display: none !important; 
+                width: 0 !important; 
+                height: 0 !important; 
+            }
+            body, * {
+                scrollbar-width: none !important;
+                -ms-overflow-style: none !important;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
+</content>
+</invoke>

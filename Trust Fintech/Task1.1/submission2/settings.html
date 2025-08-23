@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Vrithm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row mb-4" style="animation: fadeIn 1s;">
+            <div class="col-md-12">
+                <h1 class="mb-0">Settings</h1>
+                <p class="text-muted">Manage your account and preferences</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-3 mb-4" style="animation: slideInUp 0.5s;">
+                <div style="background-color: #f8f9fa; border-radius: 0.5rem; padding: 1rem; position: sticky; top: 1rem;">
+                    <ul class="nav flex-column" id="settingsTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active d-flex align-items-center" id="account-tab" data-bs-toggle="tab" data-bs-target="#account" type="button" role="tab" aria-controls="account" aria-selected="true">
+                                <i class="bi bi-person me-2"></i>
+                                Account
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link d-flex align-items-center" id="preferences-tab" data-bs-toggle="tab" data-bs-target="#preferences" type="button" role="tab" aria-controls="preferences" aria-selected="false">
+                                <i class="bi bi-sliders me-2"></i>
+                                Preferences
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link d-flex align-items-center" id="notifications-tab" data-bs-toggle="tab" data-bs-target="#notifications" type="button" role="tab" aria-controls="notifications" aria-selected="false">
+                                <i class="bi bi-bell me-2"></i>
+                                Notifications
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link d-flex align-items-center" id="subscription-tab" data-bs-toggle="tab" data-bs-target="#subscription" type="button" role="tab" aria-controls="subscription" aria-selected="false">
+                                <i class="bi bi-credit-card me-2"></i>
+                                Subscription
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link d-flex align-items-center" id="privacy-tab" data-bs-toggle="tab" data-bs-target="#privacy" type="button" role="tab" aria-controls="privacy" aria-selected="false">
+                                <i class="bi bi-shield-lock me-2"></i>
+                                Privacy
+                            </button>
+                        </li>
+                    </ul>
+                    
+                    <hr>
+                    
+                    <button class="btn btn-outline-danger w-100">
+                        <i class="bi bi-box-arrow-left me-2"></i>
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+                <div class="tab-content" id="settingsTabContent">
+                    <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+                        <div class="card settings-card slide-in-up">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Profile Information</h5>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-md-3">
+                                        <div class="avatar-upload">
+                                            <img src="assets/images/profile.JPG" class="img-fluid rounded-circle" alt="Profile Picture">
+                                            <div class="avatar-edit">
+                                                <button class="btn btn-sm btn-primary rounded-circle">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                            <form>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label for="firstName" class="form-label">First Name</label>
+                                                        <input type="text" class="form-control" id="firstName" value="Swayam">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="lastName" class="form-label">Last Name</label>
+                                                        <input type="text" class="form-control" id="lastName" value="Takkamore">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="username" class="form-label">Username</label>
+                                                    <input type="text" class="form-control" id="username" value="Swayam_voidroot">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="email" class="form-label">Email</label>
+                                                    <input type="email" class="form-control" id="email" value="takkamoreswayam@gmail.com">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="location" class="form-label">Location</label>
+                                                    <input type="text" class="form-control" id="location" value="Nagpur, India">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="phone" class="form-label">Phone</label>
+                                                    <input type="text" class="form-control" id="phone" value="8275787515">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="bio" class="form-label">Bio</label>
+                                                    <textarea class="form-control" id="bio" rows="4">Music enthusiast with a passion for discovering new artists and genres. I enjoy creating playlists for every mood and occasion. When I'm not listening to music, you can find me hiking or reading a good book.</textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary" style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Save Changes</button>
+                                            </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card settings-card slide-in-up" style="animation-delay: 0.1s;">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Change Password</h5>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="currentPassword" class="form-label">Current Password</label>
+                                        <input type="password" class="form-control" id="currentPassword">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="newPassword" class="form-label">New Password</label>
+                                        <input type="password" class="form-control" id="newPassword">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                                        <input type="password" class="form-control" id="confirmPassword">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" style="transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Update Password</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="preferences" role="tabpanel" aria-labelledby="preferences-tab">
+                        <div class="card settings-card slide-in-up">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">App Preferences</h5>
+                                <form>
+                                    <div class="mb-3">
+                                        <label class="form-label">Theme</label>
+                                        <div class="d-flex gap-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="theme" id="lightTheme" checked>
+                                                <label class="form-check-label" for="lightTheme">
+                                                    Light
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="theme" id="darkTheme">
+                                                <label class="form-check-label" for="darkTheme">
+                                                    Dark
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="theme" id="systemTheme">
+                                                <label class="form-check-label" for="systemTheme">
+                                                    System Default
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Language</label>
+                                        <select class="form-select">
+                                            <option selected>English</option>
+                                            <option>Spanish</option>
+                                            <option>French</option>
+                                            <option>German</option>
+                                            <option>Japanese</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <hr>
+                                    
+                                    <h6 class="mb-3">Playback Settings</h6>
+                                    
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="autoplay" checked>
+                                            <label class="form-check-label" for="autoplay">Autoplay</label>
+                                        </div>
+                                        <div class="form-text">Automatically play songs when opening the app</div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="crossfade" checked>
+                                            <label class="form-check-label" for="crossfade">Crossfade</label>
+                                        </div>
+                                        <div class="form-text">Smoothly transition between songs</div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="crossfadeSeconds" class="form-label">Crossfade Duration</label>
+                                        <select class="form-select" id="crossfadeSeconds">
+                                            <option>1 second</option>
+                                            <option selected>3 seconds</option>
+                                            <option>5 seconds</option>
+                                            <option>8 seconds</option>
+                                            <option>12 seconds</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="audioQuality" class="form-label">Audio Quality</label>
+                                        <select class="form-select" id="audioQuality">
+                                            <option>Low (64 kbps)</option>
+                                            <option>Normal (128 kbps)</option>
+                                            <option selected>High (256 kbps)</option>
+                                            <option>Very High (320 kbps)</option>
+                                        </select>
+                                        <div class="form-text">Higher quality uses more data</div>
+                                    </div>
+                                    
+                                    <hr>
+                                    
+                                    <h6 class="mb-3">Content Preferences</h6>
+                                    
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="explicitContent" checked>
+                                            <label class="form-check-label" for="explicitContent">Allow Explicit Content</label>
+                                        </div>
+                                        <div class="form-text">Show songs with explicit lyrics and content</div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary mt-3 hover-scale">Save Preferences</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="notifications" role="tabpanel" aria-labelledby="notifications-tab">
+                        <div class="card settings-card slide-in-up">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Notification Settings</h5>
+                                
+                                <div class="d-flex justify-content-between mb-4">
+                                    <h6 class="mb-0">Enable Notifications</h6>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="enableNotifications" checked>
+                                    </div>
+                                </div>
+                                
+                                <hr>
+                                
+                                <h6 class="mb-3">Email Notifications</h6>
+                                
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <p class="mb-0">New Releases</p>
+                                            <small class="text-muted">Get notified when your favorite artists release new music</small>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="emailNewReleases" checked>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <p class="mb-0">Playlist Updates</p>
+                                            <small class="text-muted">Get notified when your followed playlists are updated</small>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="emailPlaylistUpdates" checked>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <p class="mb-0">Artist News</p>
+                                            <small class="text-muted">Get updates about your favorite artists</small>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="emailArtistNews">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <p class="mb-0">Promotions</p>
+                                            <small class="text-muted">Receive special offers and promotions</small>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="emailPromotions">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <hr>
+                                
+                                <h6 class="mb-3">Push Notifications</h6>
+                                
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <p class="mb-0">New Releases</p>
+                                            <small class="text-muted">Get notified when your favorite artists release new music</small>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="pushNewReleases" checked>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <p class="mb-0">Friend Activity</p>
+                                            <small class="text-muted">See what your friends are listening to</small>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="pushFriendActivity" checked>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary mt-3 hover-scale">Save Notification Settings</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="subscription" role="tabpanel" aria-labelledby="subscription-tab">
+                        <div class="card settings-card slide-in-up">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-4">
+                                    <div>
+                                        <h5 class="card-title mb-1">Current Plan</h5>
+                                        <p class="text-muted mb-0">Manage your subscription</p>
+                                    </div>
+                                    <span class="badge bg-success rounded-pill px-3 py-2">Premium</span>
+                                </div>
+                                
+                                <div class="card bg-light mb-4">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <h6 class="mb-0">Premium Individual</h6>
+                                            <h6 class="mb-0">$9.99/month</h6>
+                                        </div>
+                                        <p class="text-muted small mb-2">Next billing date: August 21, 2025</p>
+                                        <p class="text-muted small mb-0">Payment method: •••• •••• •••• 4242</p>
+                                    </div>
+                                </div>
+                                
+                                <h6 class="mb-3">Plan Benefits</h6>
+                                <ul class="list-group mb-4">
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Ad-free music listening
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Download songs for offline listening
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        High quality audio (320 kbps)
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Unlimited skips
+                                    </li>
+                                </ul>
+                                
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-primary hover-scale">Change Plan</button>
+                                    <button class="btn btn-outline-secondary hover-scale">Update Payment</button>
+                                    <button class="btn btn-outline-danger hover-scale">Cancel Subscription</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card settings-card slide-in-up" style="animation-delay: 0.1s;">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Available Plans</h5>
+                                
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="card h-100 hover-scale">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Premium Duo</h5>
+                                                <h6 class="card-subtitle mb-2 text-muted">$12.99/month</h6>
+                                                <p class="card-text">2 Premium accounts for a couple under one roof.</p>
+                                                <button class="btn btn-sm btn-outline-primary w-100">Upgrade</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card h-100 hover-scale">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Premium Family</h5>
+                                                <h6 class="card-subtitle mb-2 text-muted">$14.99/month</h6>
+                                                <p class="card-text">6 Premium accounts for family members living under one roof.</p>
+                                                <button class="btn btn-sm btn-outline-primary w-100">Upgrade</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card h-100 hover-scale">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Premium Student</h5>
+                                                <h6 class="card-subtitle mb-2 text-muted">$4.99/month</h6>
+                                                <p class="card-text">Premium for eligible students at a discounted rate.</p>
+                                                <button class="btn btn-sm btn-outline-primary w-100">Verify Eligibility</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Privacy Tab -->
+                    <div class="tab-pane fade" id="privacy" role="tabpanel" aria-labelledby="privacy-tab">
+                        <div class="card settings-card slide-in-up">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Privacy Settings</h5>
+                                
+                                <h6 class="mb-3">Profile Visibility</h6>
+                                <div class="mb-3">
+                                    <label for="profileVisibility" class="form-label">Who can see your profile</label>
+                                    <select class="form-select" id="profileVisibility">
+                                        <option>Everyone</option>
+                                        <option selected>Friends Only</option>
+                                        <option>Only Me</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="showRecentlyPlayed" checked>
+                                        <label class="form-check-label" for="showRecentlyPlayed">Show Recently Played</label>
+                                    </div>
+                                    <div class="form-text">Allow others to see what you've been listening to</div>
+                                </div>
+                                
+                                <hr>
+                                
+                                <h6 class="mb-3">Data Privacy</h6>
+                                
+                                <div class="mb-4">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="personalizedAds" checked>
+                                        <label class="form-check-label" for="personalizedAds">Personalized Ads</label>
+                                    </div>
+                                    <div class="form-text">Allow us to show you ads based on your listening habits</div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="dataCollection" checked>
+                                        <label class="form-check-label" for="dataCollection">Usage Data Collection</label>
+                                    </div>
+                                    <div class="form-text">Help us improve our service by sharing usage data</div>
+                                </div>
+                                
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary hover-scale">Save Privacy Settings</button>
+                                    <button class="btn btn-outline-secondary hover-scale">Download My Data</button>
+                                    <button class="btn btn-outline-danger hover-scale">Delete My Account</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+    <script>
+        // Hide webkit scrollbars
+        const style = document.createElement('style');
+        style.textContent = `
+            body::-webkit-scrollbar, *::-webkit-scrollbar { 
+                display: none !important; 
+                width: 0 !important; 
+                height: 0 !important; 
+            }
+            body, * {
+                scrollbar-width: none !important;
+                -ms-overflow-style: none !important;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

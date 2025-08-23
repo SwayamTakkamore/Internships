@@ -1,0 +1,71 @@
+Task Name: Complete Extended KYC Form 
+Description: Please fill out all mandatory (*) fields accurately. This is required for identity verification, regulatory compliance, and account setup.
+
+🧾 SECTION 1: Basic Account Information
+1. Account Type:* -- Select Account Type --
+2. Customer Type:* (Individual / Non-Individual)
+3. Preferred Branch:* -- Select Branch --
+4. Date of Application:*
+ 
+
+📧 SECTION 2: Contact & Verification
+6. E-Mail ID:*
+7. E-Mail OTP:*
+8. Mobile Number:*
+9. Alternate Mobile Number:
+10. Mobile OTP (for Aadhaar)*:
+
+🆔 SECTION 3: Aadhaar (UIDAI) Details
+11. Aadhaar Number:*
+12. Aadhaar OTP:*
+13. Aadhaar Name:*
+14. Date of Birth (as per Aadhaar):*
+15. Gender:* (Male / Female / Other)
+
+👤 SECTION 4: Personal Information
+16. Full Legal Name:*
+17. Father’s Name:*
+18. Mother’s Name:*
+19. Spouse/Guardian Name (Care Of):*
+20. Marital Status:* (Single / Married / Widowed / Divorced)
+21. Nationality:*
+22. Religion:
+23. Residential Status:* (Resident / NRI / OCI / PIO)
+24. Place of Birth:
+25. Country of Birth:
+
+📍 SECTION 5: Address Details
+26. Street/ House/ Landmark:*
+27. Area / Locality:*
+28. Location/Village / Town:*
+29. Post Office:*
+30. City / District:*
+31. State:*
+32. Country:*
+33. Pincode:*
+34. Type of Address:* (Residential / Office / Other)
+35. Is Permanent Address Same as Current? (Yes/No)
+36. Permanent Address: (if different)
+
+💼 SECTION 6: Employment & Financials
+37. Occupation Type:* (Salaried / Business / Retired / Student / Housewife / Other)
+38. Employer Name / Business Name:
+39. Nature of Business / Industry:
+40. Designation / Role:
+41. Annual Income Range:*
+42. Source of Funds:* (Salary / Business / Investments / Others)
+
+
+💳 SECTION 7: Banking & ID Details
+47. PAN Number:*
+48. PAN Holder Name:*
+49. Driving Licence Number:
+50. Driving Licence DOB:
+51. Driving Licence Name:
+
+📎 SECTION 8: Document Uploads
+58. Upload Aadhaar Card (Front & Back):*
+59. Upload PAN Card:*
+60. Upload Passport / Driving Licence:
+62. Upload Address Proof (if different):
+63. Upload Signature:*

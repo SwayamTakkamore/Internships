@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlists - Vrithm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes slideInLeft { from { transform: translateX(-50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideInRight { from { transform: translateX(50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        
+        .playlist-card {
+            border: none;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .playlist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .playlist-card .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .playlist-card:hover .play-overlay {
+            opacity: 1;
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        
+        .slide-in-up {
+            animation: slideInUp 0.5s forwards;
+        }
+        
+        .slide-in-up[data-delay="0.1s"] {
+            animation-delay: 0.1s;
+        }
+        
+        .slide-in-up[data-delay="0.2s"] {
+            animation-delay: 0.2s;
+        }
+        
+        .slide-in-up[data-delay="0.3s"] {
+            animation-delay: 0.3s;
+        }
+        
+        .slide-in-up[data-delay="0.4s"] {
+            animation-delay: 0.4s;
+        }
+        
+        .slide-in-up[data-delay="0.5s"] {
+            animation-delay: 0.5s;
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/album-images/a6.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s;
+        }
+        
+        .hero-btn {
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <div class="hero-section">
+            <div class="container text-center">
+                <h1 class="display-4 fw-bold mb-3">Your Playlists</h1>
+                <p class="lead mb-4">Create, customize, and enjoy your personal music collections</p>
+                <button class="btn btn-primary btn-lg hero-btn">
+                    <i class="bi bi-plus-lg me-2"></i> Create New Playlist
+                </button>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="playlist-filter slide-in-up">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h5 class="mb-3 mb-md-0">Filter Playlists</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex gap-2">
+                            <select class="form-select" title="Sort playlists by">
+                                <option selected>Sort by</option>
+                                <option>Recently Added</option>
+                                <option>Alphabetical</option>
+                                <option>Most Played</option>
+                                <option>Recently Played</option>
+                            </select>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-outline-secondary active" title="Grid View">
+                                    <i class="bi bi-grid"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary" title="List View">
+                                    <i class="bi bi-list"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h4 class="mb-3 fade-in">My Playlists</h4>
+            <div class="row g-4 mb-5">
+                <div class="col-lg-3 col-md-4 col-sm-6 slide-in-up">
+                    <div class="card playlist-card h-100" data-bs-toggle="modal" data-bs-target="#modalChillVibes" style="cursor:pointer;">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1501973801540-537f08ccae7b?w=400&h=400&fit=crop&crop=center&auto=format&q=80" class="card-img-top" alt="Calm lake at dusk - Chill Vibes playlist cover">
+                            <div class="play-overlay">
+                                <button class="btn btn-primary rounded-circle" title="Play Playlist">
+                                    <i class="bi bi-play-fill fs-4"></i>
+                                </button>
+                            </div>
+                            <div class="position-absolute top-0 end-0 m-2">
+                                <span class="badge bg-dark">18 songs</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Chill Vibes</h5>
+                            <p class="card-text text-muted">Relax and unwind with these smooth tracks</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <button class="btn btn-sm btn-outline-secondary me-2" title="Edit Playlist">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger me-2" title="Delete Playlist">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                                <span class="ms-auto text-muted small">65 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6 slide-in-up" data-delay="0.1s">
+                    <div class="card playlist-card h-100" data-bs-toggle="modal" data-bs-target="#modalWorkoutMix" style="cursor:pointer;">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?w=400&h=400&fit=crop&crop=center&auto=format&q=80" class="card-img-top" alt="Dumbbells in gym - Workout Mix playlist cover">
+                            <div class="play-overlay">
+                                <button class="btn btn-primary rounded-circle" title="Play Playlist">
+                                    <i class="bi bi-play-fill fs-4"></i>
+                                </button>
+                            </div>
+                            <div class="position-absolute top-0 end-0 m-2">
+                                <span class="badge bg-dark">24 songs</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Workout Mix</h5>
+                            <p class="card-text text-muted">Energetic beats to power your workout</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <button class="btn btn-sm btn-outline-secondary me-2" title="Edit Playlist">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger me-2" title="Delete Playlist">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                                <span class="ms-auto text-muted small">82 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6 slide-in-up" data-delay="0.2s">
+                    <div class="card playlist-card h-100" data-bs-toggle="modal" data-bs-target="#modalDrivingPlaylist" style="cursor:pointer;">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=400&h=400&fit=crop&crop=center&auto=format&q=80" class="card-img-top" alt="Open highway at golden hour - Driving Playlist cover">
+                            <div class="play-overlay">
+                                <button class="btn btn-primary rounded-circle" title="Play Playlist">
+                                    <i class="bi bi-play-fill fs-4"></i>
+                                </button>
+                            </div>
+                            <div class="position-absolute top-0 end-0 m-2">
+                                <span class="badge bg-dark">15 songs</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Driving Playlist</h5>
+                            <p class="card-text text-muted">Perfect tunes for your road trips</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <button class="btn btn-sm btn-outline-secondary me-2" title="Edit Playlist">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger me-2" title="Delete Playlist">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                                <span class="ms-auto text-muted small">53 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6 slide-in-up" data-delay="0.3s">
+                    <div class="card playlist-card h-100" data-bs-toggle="modal" data-bs-target="#modalStudyFocus" style="cursor:pointer;">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1496317899792-9d7dbcd928a1?w=400&h=400&fit=crop&crop=center&auto=format&q=80" class="card-img-top" alt="Minimal workspace with laptop - Study Focus playlist cover">
+                            <div class="play-overlay">
+                                <button class="btn btn-primary rounded-circle" title="Play Playlist">
+                                    <i class="bi bi-play-fill fs-4"></i>
+                                </button>
+                            </div>
+                            <div class="position-absolute top-0 end-0 m-2">
+                                <span class="badge bg-dark">20 songs</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Study Focus</h5>
+                            <p class="card-text text-muted">Concentration-enhancing instrumental tracks</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <button class="btn btn-sm btn-outline-secondary me-2" title="Edit Playlist">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger me-2" title="Delete Playlist">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                                <span class="ms-auto text-muted small">72 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h4 class="mb-3 fade-in">Recently Played</h4>
+            <div class="row g-4 mb-5">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 slide-in-up">
+                    <div class="card playlist-card h-100">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300&h=300&fit=crop&crop=center&auto=format&q=80" class="card-img-top" alt="Sunset beach crowd - Summer Hits playlist cover">
+                        <div class="card-body p-2 text-center">
+                            <h6 class="card-title mb-0">Summer Hits</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 slide-in-up" data-delay="0.1s">
+                    <div class="card playlist-card h-100">
+                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=300&h=300&fit=crop&crop=center&auto=format&q=80" class="card-img-top" alt="DJ turntable close up - Hip Hop Mix cover">
+                        <div class="card-body p-2 text-center">
+                            <h6 class="card-title mb-0">Hip Hop Mix</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 slide-in-up" data-delay="0.2s">
+                    <div class="card playlist-card h-100">
+                        <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=300&h=300&fit=crop&crop=center&auto=format&q=80" class="card-img-top" alt="Vinyl collection shelf - 90s Classics cover">
+                        <div class="card-body p-2 text-center">
+                            <h6 class="card-title mb-0">90s Classics</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 slide-in-up" data-delay="0.3s">
+                    <div class="card playlist-card h-100">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=300&h=300&fit=crop&crop=center&auto=format&q=80" class="card-img-top" alt="Colorful club lights - Party Time cover">
+                        <div class="card-body p-2 text-center">
+                            <h6 class="card-title mb-0">Party Time</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 slide-in-up" data-delay="0.4s">
+                    <div class="card playlist-card h-100">
+                        <img src="https://images.unsplash.com/photo-1517519014922-8fc06b814a0e?w=300&h=300&fit=crop&crop=center&auto=format&q=80" class="card-img-top" alt="Warm lit lamp and book - Calm Evening cover">
+                        <div class="card-body p-2 text-center">
+                            <h6 class="card-title mb-0">Calm Evening</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6 slide-in-up" data-delay="0.5s">
+                    <div class="card playlist-card h-100">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300&h=300&fit=crop&crop=center&auto=format&q=80" class="card-img-top" alt="Coffee cup near window - Morning Coffee cover">
+                        <div class="card-body p-2 text-center">
+                            <h6 class="card-title mb-0">Morning Coffee</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card shadow-sm mb-5 slide-in-up">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Featured Playlist</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500&h=500&fit=crop&crop=center&auto=format&q=80" class="img-fluid rounded-3 hover-scale" alt="Colorful audio mixer - Featured Playlist">
+                        </div>
+                        <div class="col-md-8">
+                            <h3>This Week's Mix</h3>
+                            <p class="text-muted">Your personalized playlist, updated weekly with music we think you'll love based on your listening habits.</p>
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="text-muted me-3">35 songs • 2 hours 17 minutes</span>
+                                <span class="badge bg-success">Updated Today</span>
+                            </div>
+                            <button class="btn btn-primary me-2">
+                                <i class="bi bi-play-fill"></i> Play Now
+                            </button>
+                            <button class="btn btn-outline-secondary">
+                                <i class="bi bi-bookmark-plus"></i> Save to Library
+                            </button>
+                            
+                            <div class="mt-4">
+                                <h5>Preview Tracks</h5>
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item d-flex justify-content-between align-items-center px-0 hover-scale">
+                                        <div class="d-flex align-items-center">
+                                            <span class="me-3 text-muted">1</span>
+                                            <div>
+                                                <h6 class="mb-0">Snowfall</h6>
+                                                <small class="text-muted">Oneheart</small>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span class="text-muted me-3">3:42</span>
+                                            <button class="btn btn-sm btn-outline-primary rounded-circle" title="Play Track">
+                                                <i class="bi bi-play-fill"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex justify-content-between align-items-center px-0 hover-scale">
+                                        <div class="d-flex align-items-center">
+                                            <span class="me-3 text-muted">2</span>
+                                            <div>
+                                                <h6 class="mb-0">Therapy</h6>
+                                                <small class="text-muted">Oneheart</small>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span class="text-muted me-3">2:10</span>
+                                            <button class="btn btn-sm btn-outline-primary rounded-circle" title="Play Track">
+                                                <i class="bi bi-play-fill"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item d-flex justify-content-between align-items-center px-0 hover-scale">
+                                        <div class="d-flex align-items-center">
+                                            <span class="me-3 text-muted">3</span>
+                                            <div>
+                                                <h6 class="mb-0">Apathy</h6>
+                                                <small class="text-muted">Tezce</small>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span class="text-muted me-3">2:02</span>
+                                            <button class="btn btn-sm btn-outline-primary rounded-circle" title="Play Track">
+                                                <i class="bi bi-play-fill"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Playlist Detail Modals -->
+    <div class="modal fade" id="modalChillVibes" tabindex="-1" aria-labelledby="modalChillVibesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalChillVibesLabel">Chill Vibes • 18 Songs</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group list-group-flush small">
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Tum+Se+Hi+LoFi" class="text-decoration-none">1. Tum Se Hi (LoFi)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Khairiyat+Acoustic" class="text-decoration-none">2. Khairiyat (Acoustic)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Kaise+Hua+LoFi" class="text-decoration-none">3. Kaise Hua (LoFi)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Raabta+Unplugged" class="text-decoration-none">4. Raabta (Unplugged)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Tera+Hone+Laga+Hoon+LoFi" class="text-decoration-none">5. Tera Hone Laga Hoon (LoFi)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Raatan+Lambiyan+Chill+Mix" class="text-decoration-none">6. Raatan Lambiyan (Chill Mix)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Tujhe+Kitna+Chahne+Lage+LoFi" class="text-decoration-none">7. Tujhe Kitna Chahne Lage (LoFi)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Kesariya+LoFi" class="text-decoration-none">8. Kesariya (LoFi)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Dil+Diyan+Gallan+Acoustic" class="text-decoration-none">9. Dil Diyan Gallan (Acoustic)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Hawayein+LoFi" class="text-decoration-none">10. Hawayein (LoFi)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Phir+Le+Aya+Dil+Reprise" class="text-decoration-none">11. Phir Le Aya Dil (Reprise)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Agar+Tum+Saath+Ho+LoFi" class="text-decoration-none">12. Agar Tum Saath Ho (LoFi)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Pani+Da+Rang+Acoustic" class="text-decoration-none">13. Pani Da Rang (Acoustic)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Kabira+Encore+Chill" class="text-decoration-none">14. Kabira (Encore) (Chill)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Tera+Yaar+Hoon+Main+LoFi" class="text-decoration-none">15. Tera Yaar Hoon Main (LoFi)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Safar+Song" class="text-decoration-none">16. Safar (Chill)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Shayad+LoFi" class="text-decoration-none">17. Shayad (LoFi)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Baarishein+Anuv+Jain" class="text-decoration-none">18. Baarishein - Anuv Jain</a></li>
+                    </ul>
+                </div>
+                <div class="modal-footer py-2">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-play-fill"></i> Play All</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalWorkoutMix" tabindex="-1" aria-labelledby="modalWorkoutMixLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalWorkoutMixLabel">Workout Mix • 24 Songs</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group list-group-flush small">
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Jai+Ho+song" class="text-decoration-none">1. Jai Ho</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Zinda+Bhaag+Milkha+Bhaag" class="text-decoration-none">2. Zinda</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Malhari+song" class="text-decoration-none">3. Malhari</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Sultan+Title+Track" class="text-decoration-none">4. Sultan Title Track</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Kar+Har+Maidan+Fateh" class="text-decoration-none">5. Kar Har Maidan Fateh</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Brothers+Anthem" class="text-decoration-none">6. Brothers Anthem</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Sher+Aaya+Sher+Gully+Boy" class="text-decoration-none">7. Sher Aaya Sher</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Apna+Time+Aayega" class="text-decoration-none">8. Apna Time Aayega</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Ziddi+Dil+Mary+Kom" class="text-decoration-none">9. Ziddi Dil</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Chak+De+India+Title+song" class="text-decoration-none">10. Chak De India (Title)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Dangal+Title+Track" class="text-decoration-none">11. Dangal Title Track</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Jashn-e-Ishqa+Gunday" class="text-decoration-none">12. Jashn-e-Ishqa</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Jee+Karda+Badlapur" class="text-decoration-none">13. Jee Karda</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Saadda+Haq+song" class="text-decoration-none">14. Saadda Haq</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Bang+Bang+Title+Track" class="text-decoration-none">15. Bang Bang (Title)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Ghungroo+song" class="text-decoration-none">16. Ghungroo (Workout Mix)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Badtameez+Dil" class="text-decoration-none">17. Badtameez Dil (Energy)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Zingaat+Hindi" class="text-decoration-none">18. Zingaat (Hindi)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Aala+Re+Aala+Simmba" class="text-decoration-none">19. Aala Re Aala</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Deva+Shree+Ganesha" class="text-decoration-none">20. Deva Shree Ganesha</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Lakshya+Title+Track" class="text-decoration-none">21. Lakshya (Title)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Jai+Jai+Shivshankar+song" class="text-decoration-none">22. Jai Jai Shivshankar</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Kamariya+song" class="text-decoration-none">23. Kamariya (Mix)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=KGF+Theme+song" class="text-decoration-none">24. KGF Theme (Rock)</a></li>
+                    </ul>
+                </div>
+                <div class="modal-footer py-2">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-play-fill"></i> Play All</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalDrivingPlaylist" tabindex="-1" aria-labelledby="modalDrivingPlaylistLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDrivingPlaylistLabel">Driving Playlist • 15 Songs</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group list-group-flush small">
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Ilahi+song" class="text-decoration-none">1. Ilahi</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Safarnama+Tamasha" class="text-decoration-none">2. Safarnama</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Patakha+Guddi" class="text-decoration-none">3. Patakha Guddi</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Journey+Song+Piku" class="text-decoration-none">4. Journey Song</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Zindagi+Ek+Safar+song" class="text-decoration-none">5. Zindagi Ek Safar</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Dil+Chahta+Hai+Title+Track" class="text-decoration-none">6. Dil Chahta Hai (Title)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Khaabon+Ke+Parinday" class="text-decoration-none">7. Khaabon Ke Parinday</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Oh+Gujariya+song" class="text-decoration-none">8. Oh Gujariya (Travel Mix)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Dil+Dhadakne+Do+song" class="text-decoration-none">9. Dil Dhadakne Do</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Hum+Jo+Chalne+Lage" class="text-decoration-none">10. Hum Jo Chalne Lage</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Aao+Milo+Chale" class="text-decoration-none">11. Aao Milo Chale</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Yun+Hi+Chala+Chal" class="text-decoration-none">12. Yun Hi Chala Chal</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Tanha+Dil" class="text-decoration-none">13. Tanha Dil (Road Mix)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Kabira+song" class="text-decoration-none">14. Kabira (Travel Mix)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Phir+Se+Ud+Chala" class="text-decoration-none">15. Phir Se Ud Chala</a></li>
+                    </ul>
+                </div>
+                <div class="modal-footer py-2">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-play-fill"></i> Play All</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalStudyFocus" tabindex="-1" aria-labelledby="modalStudyFocusLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalStudyFocusLabel">Study Focus • 20 Songs</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group list-group-flush small">
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Bansuri+Meditation" class="text-decoration-none">1. Bansuri Meditation</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Veena+Harmony" class="text-decoration-none">2. Veena Harmony</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Sitar+Waves" class="text-decoration-none">3. Sitar Waves</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Sarangi+Echoes" class="text-decoration-none">4. Sarangi Echoes</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Santoor+Drift" class="text-decoration-none">5. Santoor Drift</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Piano+Rain+LoFi" class="text-decoration-none">6. Piano Rain (LoFi)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=LoFi+Tabla+Beat" class="text-decoration-none">7. LoFi Tabla Beat</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Tanpura+Drone" class="text-decoration-none">8. Calm Tanpura Drone</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Flute+Breeze" class="text-decoration-none">9. Flute Breeze</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Night+Raga+Ambient" class="text-decoration-none">10. Night Raga (Ambient)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Veena+Reflections" class="text-decoration-none">11. Veena Reflections</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Morning+Raga+Alap" class="text-decoration-none">12. Morning Raga (Alap)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=LoFi+Study+Loop+1" class="text-decoration-none">13. LoFi Study Loop 1</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=LoFi+Study+Loop+2" class="text-decoration-none">14. LoFi Study Loop 2</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Soft+Synth+Pad" class="text-decoration-none">15. Soft Synth Pad</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Chill+Carnatic+Keys" class="text-decoration-none">16. Chill Carnatic Keys</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Himalayan+Wind+Chimes" class="text-decoration-none">17. Himalayan Wind Chimes</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Rain+on+Window+Loop" class="text-decoration-none">18. Rain on Window (Loop)</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Library+Ambience+sound" class="text-decoration-none">19. Library Ambience</a></li>
+                        <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Deep+Focus+Drone" class="text-decoration-none">20. Deep Focus Drone</a></li>
+                    </ul>
+                </div>
+                <div class="modal-footer py-2">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-play-fill"></i> Play All</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+    <script>
+        // Hide webkit scrollbars
+        const style = document.createElement('style');
+        style.textContent = `
+            body::-webkit-scrollbar, *::-webkit-scrollbar { 
+                display: none !important; 
+                width: 0 !important; 
+                height: 0 !important; 
+            }
+            body, * {
+                scrollbar-width: none !important;
+                -ms-overflow-style: none !important;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

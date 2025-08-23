@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYC Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .phone-code-select {
+            max-width: 120px;
+        }
+        .uppercase-input {
+            text-transform: uppercase;
+        }
+        .is-invalid {
+            border-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">Know Your Customer (KYC) Form</h3>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <!-- SECTION 1: Basic Account Information -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="text-primary border-bottom pb-2">🧾 Basic Account Information</h5>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="accountType" class="form-label">Account Type *</label>
+                                    <select class="form-select" id="accountType" required>
+                                        <option value="">-- Select Account Type --</option>
+                                        <option value="savings">Savings Account</option>
+                                        <option value="current">Current Account</option>
+                                        <option value="fixed">Fixed Deposit</option>
+                                        <option value="loan">Loan Account</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="customerType" class="form-label">Customer Type *</label>
+                                    <select class="form-select" id="customerType" required>
+                                        <option value="">Select Customer Type</option>
+                                        <option value="individual">Individual</option>
+                                        <option value="non-individual">Non-Individual</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="preferredBranch" class="form-label">Preferred Branch *</label>
+                                    <select class="form-select" id="preferredBranch" required>
+                                        <option value="">-- Select Branch --</option>
+                                        <option value="mumbai-main">Mumbai Main Branch</option>
+                                        <option value="delhi-central">Delhi Central Branch</option>
+                                        <option value="bangalore-mg">Bangalore MG Road Branch</option>
+                                        <option value="chennai-anna">Chennai Anna Nagar Branch</option>
+                                        <option value="kolkata-park">Kolkata Park Street Branch</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="applicationDate" class="form-label">Date of Application *</label>
+                                    <input type="date" class="form-control" id="applicationDate" required>
+                                </div>
+                            </div>
+                            
+                            <!-- SECTION 2: Contact & Verification -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="text-primary border-bottom pb-2 mt-4">📧 Contact & Verification</h5>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">E-Mail ID *</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="emailOtp" class="form-label">E-Mail OTP *</label>
+                                    <input type="text" class="form-control" id="emailOtp" maxlength="6" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="mobileNumber" class="form-label">Mobile Number *</label>
+                                    <div class="input-group">
+                                        <select class="form-select phone-code-select" id="mobilePhoneCode" title="Country Code">
+                                            <option value="+91">+91 (IN)</option>
+                                            <option value="+1">+1 (US)</option>
+                                            <option value="+44">+44 (UK)</option>
+                                            <option value="+61">+61 (AU)</option>
+                                            <option value="+86">+86 (CN)</option>
+                                        </select>
+                                        <input type="tel" class="form-control" id="mobileNumber" maxlength="10" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="alternateMobile" class="form-label">Alternate Mobile Number</label>
+                                    <input type="tel" class="form-control" id="alternateMobile" maxlength="10">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="mobileOtp" class="form-label">Mobile OTP (for Aadhaar) *</label>
+                                    <input type="text" class="form-control" id="mobileOtp" maxlength="6" required>
+                                </div>
+                            </div>
+                            
+                            <!-- SECTION 3: Aadhaar (UIDAI) Details -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="text-primary border-bottom pb-2 mt-4">🆔 Aadhaar (UIDAI) Details</h5>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="aadhaarNumber" class="form-label">Aadhaar Number *</label>
+                                    <input type="text" class="form-control" id="aadhaarNumber" maxlength="12" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="aadhaarOtp" class="form-label">Aadhaar OTP *</label>
+                                    <input type="text" class="form-control" id="aadhaarOtp" maxlength="6" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="aadhaarName" class="form-label">Aadhaar Name *</label>
+                                    <input type="text" class="form-control" id="aadhaarName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="aadhaarDob" class="form-label">Date of Birth (as per Aadhaar) *</label>
+                                    <input type="date" class="form-control" id="aadhaarDob" max="2006-01-01" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="gender" class="form-label">Gender *</label>
+                                    <select class="form-select" id="gender" required>
+                                        <option value="">Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- SECTION 4: Personal Information -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="text-primary border-bottom pb-2 mt-4">👤 Personal Information</h5>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="fullLegalName" class="form-label">Full Legal Name *</label>
+                                    <input type="text" class="form-control" id="fullLegalName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="fatherName" class="form-label">Father's Name *</label>
+                                    <input type="text" class="form-control" id="fatherName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="motherName" class="form-label">Mother's Name *</label>
+                                    <input type="text" class="form-control" id="motherName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="spouseGuardian" class="form-label">Spouse/Guardian Name (Care Of) *</label>
+                                    <input type="text" class="form-control" id="spouseGuardian" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="maritalStatus" class="form-label">Marital Status *</label>
+                                    <select class="form-select" id="maritalStatus" required>
+                                        <option value="">Select Marital Status</option>
+                                        <option value="single">Single</option>
+                                        <option value="married">Married</option>
+                                        <option value="widowed">Widowed</option>
+                                        <option value="divorced">Divorced</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="nationality" class="form-label">Nationality *</label>
+                                    <select class="form-select" id="nationality" required>
+                                        <option value="">Select Nationality</option>
+                                        <option value="indian">Indian</option>
+                                        <option value="american">American</option>
+                                        <option value="british">British</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="religion" class="form-label">Religion</label>
+                                    <input type="text" class="form-control" id="religion">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="residentialStatus" class="form-label">Residential Status *</label>
+                                    <select class="form-select" id="residentialStatus" required>
+                                        <option value="">Select Status</option>
+                                        <option value="resident">Resident</option>
+                                        <option value="nri">NRI</option>
+                                        <option value="oci">OCI</option>
+                                        <option value="pio">PIO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="placeOfBirth" class="form-label">Place of Birth</label>
+                                    <input type="text" class="form-control" id="placeOfBirth">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="countryOfBirth" class="form-label">Country of Birth</label>
+                                    <input type="text" class="form-control" id="countryOfBirth">
+                                </div>
+                            </div>
+                            
+                            <!-- SECTION 5: Address Details -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="text-primary border-bottom pb-2 mt-4">📍 Address Details</h5>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="streetHouse" class="form-label">Street/ House/ Landmark *</label>
+                                    <input type="text" class="form-control" id="streetHouse" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="areaLocality" class="form-label">Area / Locality *</label>
+                                    <input type="text" class="form-control" id="areaLocality" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="locationVillage" class="form-label">Location/Village / Town *</label>
+                                    <input type="text" class="form-control" id="locationVillage" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="postOffice" class="form-label">Post Office *</label>
+                                    <input type="text" class="form-control" id="postOffice" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="cityDistrict" class="form-label">City / District *</label>
+                                    <input type="text" class="form-control" id="cityDistrict" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="state" class="form-label">State *</label>
+                                    <input type="text" class="form-control" id="state" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="country" class="form-label">Country *</label>
+                                    <select class="form-select" id="country" required>
+                                        <option value="">Select Country</option>
+                                        <option value="india">India</option>
+                                        <option value="usa">United States</option>
+                                        <option value="uk">United Kingdom</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="pincode" class="form-label">Pincode *</label>
+                                    <input type="text" class="form-control" id="pincode" maxlength="6" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="addressType" class="form-label">Type of Address *</label>
+                                    <select class="form-select" id="addressType" required>
+                                        <option value="">Select Address Type</option>
+                                        <option value="residential">Residential</option>
+                                        <option value="office">Office</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="permanentSame" class="form-label">Is Permanent Address Same as Current?</label>
+                                    <select class="form-select" id="permanentSame">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-12">
+                                    <label for="permanentAddress" class="form-label">Permanent Address (if different)</label>
+                                    <textarea class="form-control" id="permanentAddress" rows="3"></textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- SECTION 6: Employment & Financials -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="text-primary border-bottom pb-2 mt-4">💼 Employment & Financials</h5>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="occupationType" class="form-label">Occupation Type *</label>
+                                    <select class="form-select" id="occupationType" required>
+                                        <option value="">Select Occupation</option>
+                                        <option value="salaried">Salaried</option>
+                                        <option value="business">Business</option>
+                                        <option value="retired">Retired</option>
+                                        <option value="student">Student</option>
+                                        <option value="housewife">Housewife</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="employerBusiness" class="form-label">Employer Name / Business Name</label>
+                                    <input type="text" class="form-control" id="employerBusiness">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="natureBusiness" class="form-label">Nature of Business / Industry</label>
+                                    <input type="text" class="form-control" id="natureBusiness">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="designationRole" class="form-label">Designation / Role</label>
+                                    <input type="text" class="form-control" id="designationRole">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="annualIncome" class="form-label">Annual Income Range *</label>
+                                    <select class="form-select" id="annualIncome" required>
+                                        <option value="">Select Income Range</option>
+                                        <option value="below-2">Below ₹2 Lakh</option>
+                                        <option value="2-5">₹2-5 Lakh</option>
+                                        <option value="5-10">₹5-10 Lakh</option>
+                                        <option value="10-25">₹10-25 Lakh</option>
+                                        <option value="25-50">₹25-50 Lakh</option>
+                                        <option value="above-50">Above ₹50 Lakh</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="sourceOfFunds" class="form-label">Source of Funds *</label>
+                                    <select class="form-select" id="sourceOfFunds" required>
+                                        <option value="">Select Source</option>
+                                        <option value="salary">Salary</option>
+                                        <option value="business">Business</option>
+                                        <option value="investments">Investments</option>
+                                        <option value="others">Others</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- SECTION 7: Banking & ID Details -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="text-primary border-bottom pb-2 mt-4">💳 Banking & ID Details</h5>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="panNumber" class="form-label">PAN Number *</label>
+                                    <input type="text" class="form-control uppercase-input" id="panNumber" maxlength="10" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="panHolderName" class="form-label">PAN Holder Name *</label>
+                                    <input type="text" class="form-control" id="panHolderName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="drivingLicence" class="form-label">Driving Licence Number</label>
+                                    <input type="text" class="form-control" id="drivingLicence">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="drivingLicenceDob" class="form-label">Driving Licence DOB</label>
+                                    <input type="date" class="form-control" id="drivingLicenceDob">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="drivingLicenceName" class="form-label">Driving Licence Name</label>
+                                    <input type="text" class="form-control" id="drivingLicenceName">
+                                </div>
+                            </div>
+                            
+                            <!-- SECTION 8: Document Uploads -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="text-primary border-bottom pb-2 mt-4">📎 Document Uploads</h5>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="aadhaarUpload" class="form-label">Upload Aadhaar Card (Front & Back) *</label>
+                                    <input type="file" class="form-control" id="aadhaarUpload" accept=".pdf,.jpg,.jpeg,.png" multiple required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="panUpload" class="form-label">Upload PAN Card *</label>
+                                    <input type="file" class="form-control" id="panUpload" accept=".pdf,.jpg,.jpeg,.png" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="passportDlUpload" class="form-label">Upload Passport / Driving Licence</label>
+                                    <input type="file" class="form-control" id="passportDlUpload" accept=".pdf,.jpg,.jpeg,.png">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="addressProofUpload" class="form-label">Upload Address Proof (if different)</label>
+                                    <input type="file" class="form-control" id="addressProofUpload" accept=".pdf,.jpg,.jpeg,.png">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="signatureUpload" class="form-label">Upload Signature *</label>
+                                    <input type="file" class="form-control" id="signatureUpload" accept=".jpg,.jpeg,.png" required>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                                        <label class="form-check-label" for="termsCheck">
+                                            I agree to the Terms and Conditions and Privacy Policy *
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="consentCheck" required>
+                                        <label class="form-check-label" for="consentCheck">
+                                            I consent to the collection and processing of my personal data for KYC verification purposes *
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="accuracyCheck" required>
+                                        <label class="form-check-label" for="accuracyCheck">
+                                            I certify that all information provided is accurate and complete *
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">Submit Complete KYC Application</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Set today's date as default for application date
+        document.getElementById('applicationDate').valueAsDate = new Date();
+        
+        // Aadhaar number validation
+        document.getElementById('aadhaarNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            e.target.value = value;
+        });
+        
+        // PAN number validation
+        document.getElementById('panNumber').addEventListener('input', function(e) {
+            e.target.value = e.target.value.toUpperCase();
+        });
+        
+        // Mobile number validation
+        document.getElementById('mobileNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            e.target.value = value;
+        });
+        
+        // Alternate mobile validation
+        document.getElementById('alternateMobile').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            e.target.value = value;
+        });
+        
+        // Pincode validation
+        document.getElementById('pincode').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            e.target.value = value;
+        });
+        
+        // OTP fields validation
+        ['emailOtp', 'mobileOtp', 'aadhaarOtp'].forEach(id => {
+            document.getElementById(id).addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                e.target.value = value;
+            });
+        });
+        
+        // Show/hide permanent address field
+        document.getElementById('permanentSame').addEventListener('change', function(e) {
+            const permanentAddressField = document.getElementById('permanentAddress').closest('.row');
+            if (e.target.value === 'no') {
+                permanentAddressField.style.display = 'flex';
+                document.getElementById('permanentAddress').required = true;
+            } else {
+                permanentAddressField.style.display = 'none';
+                document.getElementById('permanentAddress').required = false;
+            }
+        });
+        
+        // Form submission validation
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic validation
+            const requiredFields = document.querySelectorAll('[required]');
+            let isValid = true;
+            let errorMessage = '';
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    field.classList.remove('is-invalid');
+                }
+            });
+            
+            // Validate Aadhaar number (12 digits)
+            const aadhaar = document.getElementById('aadhaarNumber').value;
+            if (aadhaar.length !== 12) {
+                document.getElementById('aadhaarNumber').classList.add('is-invalid');
+                errorMessage += 'Aadhaar number must be 12 digits. ';
+                isValid = false;
+            } else {
+                document.getElementById('aadhaarNumber').classList.remove('is-invalid');
+            }
+            
+            // Validate PAN number (10 characters)
+            const pan = document.getElementById('panNumber').value;
+            const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+            if (!panRegex.test(pan)) {
+                document.getElementById('panNumber').classList.add('is-invalid');
+                errorMessage += 'PAN number format is invalid (e.g., ABCDE1234F). ';
+                isValid = false;
+            } else {
+                document.getElementById('panNumber').classList.remove('is-invalid');
+            }
+            
+            // Validate mobile number (10 digits)
+            const mobile = document.getElementById('mobileNumber').value;
+            if (mobile.length !== 10) {
+                document.getElementById('mobileNumber').classList.add('is-invalid');
+                errorMessage += 'Mobile number must be 10 digits. ';
+                isValid = false;
+            } else {
+                document.getElementById('mobileNumber').classList.remove('is-invalid');
+            }
+            
+            // Validate pincode (6 digits)
+            const pincode = document.getElementById('pincode').value;
+            if (pincode.length !== 6) {
+                document.getElementById('pincode').classList.add('is-invalid');
+                errorMessage += 'Pincode must be 6 digits. ';
+                isValid = false;
+            } else {
+                document.getElementById('pincode').classList.remove('is-invalid');
+            }
+            
+            // Validate email format
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('email').classList.add('is-invalid');
+                errorMessage += 'Please enter a valid email address. ';
+                isValid = false;
+            } else {
+                document.getElementById('email').classList.remove('is-invalid');
+            }
+            
+            if (isValid) {
+                alert('KYC Application submitted successfully! You will receive a confirmation email shortly.');
+                // Here you would typically send the form data to your backend
+                console.log('Form data ready for submission');
+            } else {
+                alert('Please fix the following issues: ' + errorMessage);
+                // Scroll to the first invalid field
+                const firstInvalid = document.querySelector('.is-invalid');
+                if (firstInvalid) {
+                    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstInvalid.focus();
+                }
+            }
+        });
+        
+        // Initialize permanent address field visibility
+        document.getElementById('permanentAddress').closest('.row').style.display = 'none';
+    </script>
+</body>
+</html>
