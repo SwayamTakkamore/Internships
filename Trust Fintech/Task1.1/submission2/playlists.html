@@ -555,4 +555,27 @@
         document.head.appendChild(style);
     </script>
 </body>
+<script>
+// Sidebar active state fix: highlight Playlists, remove Explore highlight
+window.addEventListener('DOMContentLoaded', function() {
+    // Find sidebar links by text or icon (adjust selectors as needed)
+    // Example assumes sidebar uses <a> tags with text or icons
+    var sidebarLinks = document.querySelectorAll('nav.sidebar a, .sidebar a, nav a');
+    sidebarLinks.forEach(function(link) {
+        if (link.textContent.trim().toLowerCase() === 'playlists') {
+            link.classList.add('active');
+            link.style.background = '#1673ff';
+            link.style.color = '#fff';
+        } else if (link.textContent.trim().toLowerCase() === 'explore') {
+            link.classList.remove('active');
+            link.style.background = '';
+            link.style.color = '';
+        } else {
+            link.classList.remove('active');
+            link.style.background = '';
+            link.style.color = '';
+        }
+    });
+});
+</script>
 </html>

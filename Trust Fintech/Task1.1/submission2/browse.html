@@ -32,6 +32,23 @@
                 padding-right: 340px !important; /* Make room for fixed sidebar */
             }
         }
+        /* Make list-group / modal links look like plain text while remaining clickable */
+        .list-group a,
+        .list-group-item a,
+        .modal .list-group a,
+        .modal .list-group-item a {
+            text-decoration: none !important;
+            color: inherit !important;
+            display: block !important;
+            width: 100% !important;
+        }
+        .list-group a:hover,
+        .list-group-item a:hover,
+        .modal .list-group a:hover,
+        .modal .list-group-item a:hover {
+            text-decoration: none !important;
+            color: inherit !important;
+        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; overflow-x: hidden;">
