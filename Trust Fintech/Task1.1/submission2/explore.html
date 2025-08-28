@@ -67,7 +67,6 @@
                     <a href="#" style="color: #6c757d; text-decoration: none; margin-left: 12px;">New Releases</a>
                 </nav>
             </div>
-            
             <div class="d-flex align-items-center" style="gap: 12px;">
                 <!-- Search Bar -->
                 <form class="d-flex" style="max-width: 280px;">
@@ -78,11 +77,63 @@
                         </button>
                     </div>
                 </form>
-                
-                <button class="btn btn-sm btn-outline-secondary rounded-circle position-relative" style="width: 32px; height: 32px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                    <i class="bi bi-bell" style="font-size: 12px;"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 8px; padding: 2px 4px;">3</span>
-                </button>
+                <!-- Notification Dropdown copied from browse.html -->
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-secondary rounded-circle position-relative" style="width: 32px; height: 32px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-bell" style="font-size: 12px;"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger pulse" style="font-size: 8px; padding: 2px 4px; animation: pulse 2s infinite;">3</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0" style="width: 340px; max-height: 420px; overflow-y: auto; border-radius: 12px; padding: 0; margin-top: 8px; animation: fadeIn 0.3s ease;">
+                        <li><h6 class="dropdown-header bg-warning text-dark mb-0 d-flex justify-content-between align-items-center" style="padding: 16px 20px; border-radius: 12px 12px 0 0; font-weight: 600; font-size: 14px;">
+                            Notifications 
+                            <span class="badge bg-danger rounded-pill ms-2" style="font-size: 10px;">3</span>
+                        </h6></li>
+                        <li>
+                            <div class="dropdown-item-text border-bottom" style="padding: 16px 20px; border-color: #f8f9fa !important;">
+                                <div class="d-flex align-items-center">
+                                    <div class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                        <i class="bi bi-music-note text-primary" style="font-size: 18px;"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="fw-semibold" style="font-size: 13px; color: #333;">New song added to your playlist</div>
+                                        <small class="text-muted">2 minutes ago</small>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-secondary rounded-circle ms-2" style="width: 28px; height: 28px; font-size: 12px; line-height: 1;">×</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item-text border-bottom" style="padding: 16px 20px; border-color: #f8f9fa !important;">
+                                <div class="d-flex align-items-center">
+                                    <div class="rounded-circle bg-danger bg-opacity-10 d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                        <i class="bi bi-heart-fill text-danger" style="font-size: 18px;"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="fw-semibold" style="font-size: 13px; color: #333;">Someone liked your playlist</div>
+                                        <small class="text-muted">1 hour ago</small>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-secondary rounded-circle ms-2" style="width: 28px; height: 28px; font-size: 12px; line-height: 1;">×</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item-text" style="padding: 16px 20px;">
+                                <div class="d-flex align-items-center">
+                                    <div class="rounded-circle bg-success bg-opacity-10 d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                        <i class="bi bi-download text-success" style="font-size: 18px;"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="fw-semibold" style="font-size: 13px; color: #333;">Download completed</div>
+                                        <small class="text-muted">3 hours ago</small>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-secondary rounded-circle ms-2" style="width: 28px; height: 28px; font-size: 12px; line-height: 1;">×</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li><hr class="dropdown-divider my-0" style="margin: 0 !important; border-color: #e9ecef;"></li>
+                        <li><a class="dropdown-item text-center py-3" href="#" style="color: #6c757d; font-size: 13px; font-weight: 500;">View All Notifications</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
