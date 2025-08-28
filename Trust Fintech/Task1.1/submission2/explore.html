@@ -1,626 +1,2271 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Explore - Vrithm</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
     <style>
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideInUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        @keyframes slideInLeft { from { transform: translateX(-50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-        
-        @media (max-width: 991.98px) {
-            .fixed-sidebar {
-                position: relative !important;
-                right: 0 !important;
-                top: 0 !important;
-                width: 100% !important;
-                height: auto !important;
-                margin-top: 1rem;
-            }
-            .main-content {
-                padding-right: 8px !important;
-            }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
         }
-        
-        @media (min-width: 992px) {
-            .main-content {
-                padding-right: 340px !important;
-            }
+        to {
+          opacity: 1;
         }
-        /* Make list-group / modal links look like plain text while remaining clickable */
-        .list-group a,
-        .list-group-item a,
-        .modal .list-group a,
-        .modal .list-group-item a {
-            text-decoration: none !important;
-            color: inherit !important;
-            display: block !important;
-            width: 100% !important;
+      }
+      @keyframes slideInUp {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
         }
-        .list-group a:hover,
-        .list-group-item a:hover,
-        .modal .list-group a:hover,
-        .modal .list-group-item a:hover {
-            text-decoration: none !important;
-            color: inherit !important;
+        to {
+          transform: translateY(0);
+          opacity: 1;
         }
+      }
+      @keyframes slideInLeft {
+        from {
+          transform: translateX(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      @media (max-width: 991.98px) {
+        .fixed-sidebar {
+          position: relative !important;
+          right: 0 !important;
+          top: 0 !important;
+          width: 100% !important;
+          height: auto !important;
+          margin-top: 1rem;
+        }
+        .main-content {
+          padding-right: 8px !important;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .main-content {
+          padding-right: 340px !important;
+        }
+      }
+      .list-group a,
+      .list-group-item a,
+      .modal .list-group a,
+      .modal .list-group-item a {
+        text-decoration: none !important;
+        color: inherit !important;
+        display: block !important;
+        width: 100% !important;
+      }
+      .list-group a:hover,
+      .list-group-item a:hover,
+      .modal .list-group a:hover,
+      .modal .list-group-item a:hover {
+        text-decoration: none !important;
+        color: inherit !important;
+      }
     </style>
-</head>
-<body style="margin: 0; padding: 0; overflow-x: hidden;">
-    <nav class="fixed-top" style="animation: fadeIn 1s; padding: 8px 16px; background: #ffffff; z-index: 1030;">
-        <div class="d-flex align-items-center justify-content-between" style="padding: 8px 12px; min-height: 24px;">
-            <div class="d-flex align-items-center" style="gap: 20px;">
-                <div class="d-flex align-items-center" style="gap: 8px;">
-                    <i class="bi bi-music-note-beamed" style="font-size: 16px; color: #6c757d;"></i>
-                    <span style="font-weight: 500; font-size: 14px; color: #212529;">Vrithm</span>
-                </div>
-                <span style="color: #dee2e6;">|</span>
-                <nav style="font-size: 14px;">
-                    <a href="explore.html" style="color: #0d6efd; text-decoration: none; margin-right: 12px; font-weight: 500;">Explore</a>
-                    <span style="color: #dee2e6;">•</span>
-                    <a href="#" style="color: #6c757d; text-decoration: none; margin: 0 12px;">Top Charts</a>
-                    <span style="color: #dee2e6;">•</span>
-                    <a href="#" style="color: #6c757d; text-decoration: none; margin-left: 12px;">New Releases</a>
-                </nav>
-            </div>
-            <div class="d-flex align-items-center" style="gap: 12px;">
-                <!-- Search Bar -->
-                <form class="d-flex" style="max-width: 280px;">
-                    <div class="input-group">
-                        <input class="form-control form-control-sm" type="search" placeholder="Search music..." aria-label="Search" style="font-size: 13px; border: 1px solid #dee2e6;">
-                        <button class="btn btn-outline-secondary btn-sm" type="submit" style="border-left: none; padding: 4px 8px;">
-                            <i class="bi bi-search" style="font-size: 12px;"></i>
-                        </button>
-                    </div>
-                </form>
-                <!-- Notification Dropdown copied from browse.html -->
-                <div class="dropdown">
-                    <button class="btn btn-sm btn-outline-secondary rounded-circle position-relative" style="width: 32px; height: 32px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-bell" style="font-size: 12px;"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger pulse" style="font-size: 8px; padding: 2px 4px; animation: pulse 2s infinite;">3</span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0" style="width: 340px; max-height: 420px; overflow-y: auto; border-radius: 12px; padding: 0; margin-top: 8px; animation: fadeIn 0.3s ease;">
-                        <li><h6 class="dropdown-header bg-warning text-dark mb-0 d-flex justify-content-between align-items-center" style="padding: 16px 20px; border-radius: 12px 12px 0 0; font-weight: 600; font-size: 14px;">
-                            Notifications 
-                            <span class="badge bg-danger rounded-pill ms-2" style="font-size: 10px;">3</span>
-                        </h6></li>
-                        <li>
-                            <div class="dropdown-item-text border-bottom" style="padding: 16px 20px; border-color: #f8f9fa !important;">
-                                <div class="d-flex align-items-center">
-                                    <div class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                                        <i class="bi bi-music-note text-primary" style="font-size: 18px;"></i>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <div class="fw-semibold" style="font-size: 13px; color: #333;">New song added to your playlist</div>
-                                        <small class="text-muted">2 minutes ago</small>
-                                    </div>
-                                    <button class="btn btn-sm btn-outline-secondary rounded-circle ms-2" style="width: 28px; height: 28px; font-size: 12px; line-height: 1;">×</button>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item-text border-bottom" style="padding: 16px 20px; border-color: #f8f9fa !important;">
-                                <div class="d-flex align-items-center">
-                                    <div class="rounded-circle bg-danger bg-opacity-10 d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                                        <i class="bi bi-heart-fill text-danger" style="font-size: 18px;"></i>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <div class="fw-semibold" style="font-size: 13px; color: #333;">Someone liked your playlist</div>
-                                        <small class="text-muted">1 hour ago</small>
-                                    </div>
-                                    <button class="btn btn-sm btn-outline-secondary rounded-circle ms-2" style="width: 28px; height: 28px; font-size: 12px; line-height: 1;">×</button>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item-text" style="padding: 16px 20px;">
-                                <div class="d-flex align-items-center">
-                                    <div class="rounded-circle bg-success bg-opacity-10 d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                                        <i class="bi bi-download text-success" style="font-size: 18px;"></i>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <div class="fw-semibold" style="font-size: 13px; color: #333;">Download completed</div>
-                                        <small class="text-muted">3 hours ago</small>
-                                    </div>
-                                    <button class="btn btn-sm btn-outline-secondary rounded-circle ms-2" style="width: 28px; height: 28px; font-size: 12px; line-height: 1;">×</button>
-                                </div>
-                            </div>
-                        </li>
-                        <li><hr class="dropdown-divider my-0" style="margin: 0 !important; border-color: #e9ecef;"></li>
-                        <li><a class="dropdown-item text-center py-3" href="#" style="color: #6c757d; font-size: 13px; font-weight: 500;">View All Notifications</a></li>
-                    </ul>
-                </div>
-            </div>
+  </head>
+  <body style="margin: 0; padding: 0; overflow-x: hidden">
+    <nav
+      class="fixed-top"
+      style="
+        animation: fadeIn 1s;
+        padding: 8px 16px;
+        background: #ffffff;
+        z-index: 1030;
+      "
+    >
+      <div
+        class="d-flex align-items-center justify-content-between"
+        style="padding: 8px 12px; min-height: 24px"
+      >
+        <div class="d-flex align-items-center" style="gap: 20px">
+          <div class="d-flex align-items-center" style="gap: 8px">
+            <i
+              class="bi bi-music-note-beamed"
+              style="font-size: 16px; color: #6c757d"
+            ></i>
+            <span style="font-weight: 500; font-size: 14px; color: #212529"
+              >Vrithm</span
+            >
+          </div>
+          <span style="color: #dee2e6">|</span>
+          <nav style="font-size: 14px">
+            <a
+              href="explore.html"
+              style="
+                color: #0d6efd;
+                text-decoration: none;
+                margin-right: 12px;
+                font-weight: 500;
+              "
+              >Explore</a
+            >
+            <span style="color: #dee2e6">•</span>
+            <a
+              href="#"
+              style="color: #6c757d; text-decoration: none; margin: 0 12px"
+              >Top Charts</a
+            >
+            <span style="color: #dee2e6">•</span>
+            <a
+              href="#"
+              style="color: #6c757d; text-decoration: none; margin-left: 12px"
+              >New Releases</a
+            >
+          </nav>
         </div>
+        <div class="d-flex align-items-center" style="gap: 12px">
+          <form class="d-flex" style="max-width: 280px">
+            <div class="input-group">
+              <input
+                class="form-control form-control-sm"
+                type="search"
+                placeholder="Search music..."
+                aria-label="Search"
+                style="font-size: 13px; border: 1px solid #dee2e6"
+              />
+              <button
+                class="btn btn-outline-secondary btn-sm"
+                type="submit"
+                style="border-left: none; padding: 4px 8px"
+              >
+                <i class="bi bi-search" style="font-size: 12px"></i>
+              </button>
+            </div>
+          </form>
+
+          <div class="dropdown">
+            <button
+              class="btn btn-sm btn-outline-secondary rounded-circle position-relative"
+              style="width: 32px; height: 32px; transition: transform 0.3s ease"
+              onmouseover="this.style.transform='scale(1.1)'"
+              onmouseout="this.style.transform='scale(1)'"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-bell" style="font-size: 12px"></i>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger pulse"
+                style="
+                  font-size: 8px;
+                  padding: 2px 4px;
+                  animation: pulse 2s infinite;
+                "
+                >3</span
+              >
+            </button>
+            <ul
+              class="dropdown-menu dropdown-menu-end shadow-lg border-0"
+              style="
+                width: 340px;
+                max-height: 420px;
+                overflow-y: auto;
+                border-radius: 12px;
+                padding: 0;
+                margin-top: 8px;
+                animation: fadeIn 0.3s ease;
+              "
+            >
+              <li>
+                <h6
+                  class="dropdown-header bg-warning text-dark mb-0 d-flex justify-content-between align-items-center"
+                  style="
+                    padding: 16px 20px;
+                    border-radius: 12px 12px 0 0;
+                    font-weight: 600;
+                    font-size: 14px;
+                  "
+                >
+                  Notifications
+                  <span
+                    class="badge bg-danger rounded-pill ms-2"
+                    style="font-size: 10px"
+                    >3</span
+                  >
+                </h6>
+              </li>
+              <li>
+                <div
+                  class="dropdown-item-text border-bottom"
+                  style="padding: 16px 20px; border-color: #f8f9fa !important"
+                >
+                  <div class="d-flex align-items-center">
+                    <div
+                      class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center me-3"
+                      style="width: 40px; height: 40px"
+                    >
+                      <i
+                        class="bi bi-music-note text-primary"
+                        style="font-size: 18px"
+                      ></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <div
+                        class="fw-semibold"
+                        style="font-size: 13px; color: #333"
+                      >
+                        New song added to your playlist
+                      </div>
+                      <small class="text-muted">2 minutes ago</small>
+                    </div>
+                    <button
+                      class="btn btn-sm btn-outline-secondary rounded-circle ms-2"
+                      style="
+                        width: 28px;
+                        height: 28px;
+                        font-size: 12px;
+                        line-height: 1;
+                      "
+                    >
+                      ×
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div
+                  class="dropdown-item-text border-bottom"
+                  style="padding: 16px 20px; border-color: #f8f9fa !important"
+                >
+                  <div class="d-flex align-items-center">
+                    <div
+                      class="rounded-circle bg-danger bg-opacity-10 d-flex align-items-center justify-content-center me-3"
+                      style="width: 40px; height: 40px"
+                    >
+                      <i
+                        class="bi bi-heart-fill text-danger"
+                        style="font-size: 18px"
+                      ></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <div
+                        class="fw-semibold"
+                        style="font-size: 13px; color: #333"
+                      >
+                        Someone liked your playlist
+                      </div>
+                      <small class="text-muted">1 hour ago</small>
+                    </div>
+                    <button
+                      class="btn btn-sm btn-outline-secondary rounded-circle ms-2"
+                      style="
+                        width: 28px;
+                        height: 28px;
+                        font-size: 12px;
+                        line-height: 1;
+                      "
+                    >
+                      ×
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="dropdown-item-text" style="padding: 16px 20px">
+                  <div class="d-flex align-items-center">
+                    <div
+                      class="rounded-circle bg-success bg-opacity-10 d-flex align-items-center justify-content-center me-3"
+                      style="width: 40px; height: 40px"
+                    >
+                      <i
+                        class="bi bi-download text-success"
+                        style="font-size: 18px"
+                      ></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <div
+                        class="fw-semibold"
+                        style="font-size: 13px; color: #333"
+                      >
+                        Download completed
+                      </div>
+                      <small class="text-muted">3 hours ago</small>
+                    </div>
+                    <button
+                      class="btn btn-sm btn-outline-secondary rounded-circle ms-2"
+                      style="
+                        width: 28px;
+                        height: 28px;
+                        font-size: 12px;
+                        line-height: 1;
+                      "
+                    >
+                      ×
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <hr
+                  class="dropdown-divider my-0"
+                  style="margin: 0 !important; border-color: #e9ecef"
+                />
+              </li>
+              <li>
+                <a
+                  class="dropdown-item text-center py-3"
+                  href="#"
+                  style="color: #6c757d; font-size: 13px; font-weight: 500"
+                  >View All Notifications</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </nav>
 
-    <div class="container-fluid" style="padding: 8px; max-width: 100%; margin: 0; margin-top: 56px;">
-
-        <div class="card text-white border-0 rounded-4 mb-3" style="background: linear-gradient(to right, #8E2DE2, #4A00E0); animation: slideInUp 0.5s; margin-left: 4px; margin-right: 4px;">
-            <div class="card-body" style="padding: 20px;">
-                <div class="row align-items-center" style="margin: 0;">
-                    <div class="col-md-7" style="padding-left: 8px; padding-right: 8px;">
-                        <h1 class="display-6 fw-bold mb-2" style="font-size: 2.2rem;">Discover New Music</h1>
-                        <p class="mb-3" style="font-size: 15px; line-height: 1.4;">Find your next favorite song from our curated playlists and recommendations.</p>
-                        <a href="explore.html" class="btn btn-light btn-lg" style="transition: transform 0.3s ease; font-size: 14px; padding: 8px 16px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Start Exploring</a>
-                    </div>
-                    <div class="col-md-5 text-center" style="padding-left: 8px; padding-right: 8px;">
-                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=400&h=400&fit=crop&crop=center&auto=format&q=80" class="img-fluid rounded-circle" alt="Vibrant headphones and vinyl - Discover New Music" style="width: 180px; height: 180px; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    </div>
-                </div>
+    <div
+      class="container-fluid"
+      style="padding: 8px; max-width: 100%; margin: 0; margin-top: 56px"
+    >
+      <div
+        class="card text-white border-0 rounded-4 mb-3"
+        style="
+          background: linear-gradient(to right, #8e2de2, #4a00e0);
+          animation: slideInUp 0.5s;
+          margin-left: 4px;
+          margin-right: 4px;
+        "
+      >
+        <div class="card-body" style="padding: 20px">
+          <div class="row align-items-center" style="margin: 0">
+            <div class="col-md-7" style="padding-left: 8px; padding-right: 8px">
+              <h1 class="display-6 fw-bold mb-2" style="font-size: 2.2rem">
+                Discover New Music
+              </h1>
+              <p class="mb-3" style="font-size: 15px; line-height: 1.4">
+                Find your next favorite song from our curated playlists and
+                recommendations.
+              </p>
+              <a
+                href="explore.html"
+                class="btn btn-light btn-lg"
+                style="
+                  transition: transform 0.3s ease;
+                  font-size: 14px;
+                  padding: 8px 16px;
+                "
+                onmouseover="this.style.transform='scale(1.05)'"
+                onmouseout="this.style.transform='scale(1)'"
+                >Start Exploring</a
+              >
             </div>
+            <div
+              class="col-md-5 text-center"
+              style="padding-left: 8px; padding-right: 8px"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=400&h=400&fit=crop&crop=center&auto=format&q=80"
+                class="img-fluid rounded-circle"
+                alt="Vibrant headphones and vinyl - Discover New Music"
+                style="
+                  width: 180px;
+                  height: 180px;
+                  object-fit: cover;
+                  transition: transform 0.3s ease;
+                "
+                onmouseover="this.style.transform='scale(1.05)'"
+                onmouseout="this.style.transform='scale(1)'"
+              />
+            </div>
+          </div>
         </div>
+      </div>
 
-        <h3 class="mb-2" style="animation: fadeIn 1s; padding-left: 8px; font-size: 1.4rem;">Featured Playlists</h3>
-        <div class="row mb-4" style="margin-left: 4px; margin-right: 4px;">
-            <div class="col-md-3 col-sm-6 col-12" style="animation: slideInUp 0.5s; animation-delay: 0.1s; padding: 4px;">
-                <div class="card h-100 border-0 shadow-sm" style="transition: transform 0.3s ease; max-width: 100%;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=400&fit=crop&crop=center&auto=format&q=80" class="card-img-top" alt="Chill ocean sunset - Chill Vibes playlist cover" style="height: 160px; object-fit: cover;">
-                    <div class="card-body" style="padding: 12px;">
-                        <h5 class="card-title" style="font-size: 15px; margin-bottom: 6px;">Chill Vibes</h5>
-                        <p class="card-text text-muted" style="font-size: 12px; margin-bottom: 8px;">Relax and unwind with these smooth tracks</p>
-                    </div>
-                    <div class="card-footer bg-transparent border-0" style="padding: 8px 12px;">
-                        <button class="btn btn-sm btn-outline-primary w-100" style="font-size: 12px; padding: 6px;">
-                            <i class="bi bi-play-fill"></i> Play Now
-                        </button>
-                    </div>
-                </div>
+      <h3
+        class="mb-2"
+        style="animation: fadeIn 1s; padding-left: 8px; font-size: 1.4rem"
+      >
+        Featured Playlists
+      </h3>
+      <div class="row mb-4" style="margin-left: 4px; margin-right: 4px">
+        <div
+          class="col-md-3 col-sm-6 col-12"
+          style="animation: slideInUp 0.5s; animation-delay: 0.1s; padding: 4px"
+        >
+          <div
+            class="card h-100 border-0 shadow-sm"
+            style="transition: transform 0.3s ease; max-width: 100%"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=400&fit=crop&crop=center&auto=format&q=80"
+              class="card-img-top"
+              alt="Chill ocean sunset - Chill Vibes playlist cover"
+              style="height: 160px; object-fit: cover"
+            />
+            <div class="card-body" style="padding: 12px">
+              <h5
+                class="card-title"
+                style="font-size: 15px; margin-bottom: 6px"
+              >
+                Chill Vibes
+              </h5>
+              <p
+                class="card-text text-muted"
+                style="font-size: 12px; margin-bottom: 8px"
+              >
+                Relax and unwind with these smooth tracks
+              </p>
             </div>
-            <div class="col-md-3 col-sm-6 col-12" style="animation: slideInUp 0.5s; animation-delay: 0.2s; padding: 4px;">
-                <div class="card h-100 border-0 shadow-sm" style="transition: transform 0.3s ease; max-width: 100%;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=400&fit=crop&crop=center&auto=format&q=80" class="card-img-top" alt="DJ turntable close-up - Hip Hop Hits playlist cover" style="height: 160px; object-fit: cover;">
-                    <div class="card-body" style="padding: 12px;">
-                        <h5 class="card-title" style="font-size: 15px; margin-bottom: 6px;">Hip Hop Hits</h5>
-                        <p class="card-text text-muted" style="font-size: 12px; margin-bottom: 8px;">The latest and greatest in hip hop</p>
-                    </div>
-                    <div class="card-footer bg-transparent border-0" style="padding: 8px 12px;">
-                        <button class="btn btn-sm btn-outline-primary w-100" style="font-size: 12px; padding: 6px;">
-                            <i class="bi bi-play-fill"></i> Play Now
-                        </button>
-                    </div>
-                </div>
+            <div
+              class="card-footer bg-transparent border-0"
+              style="padding: 8px 12px"
+            >
+              <button
+                class="btn btn-sm btn-outline-primary w-100"
+                style="font-size: 12px; padding: 6px"
+              >
+                <i class="bi bi-play-fill"></i> Play Now
+              </button>
             </div>
-            <div class="col-md-3 col-sm-6 col-12" style="animation: slideInUp 0.5s; animation-delay: 0.3s; padding: 4px;">
-                <div class="card h-100 border-0 shadow-sm" style="transition: transform 0.3s ease; max-width: 100%;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=400&fit=crop&crop=center&auto=format&q=80" class="card-img-top" alt="Kettlebells in gym - Workout Mix playlist cover" style="height: 160px; object-fit: cover;">
-                    <div class="card-body" style="padding: 12px;">
-                        <h5 class="card-title" style="font-size: 15px; margin-bottom: 6px;">Workout Mix</h5>
-                        <p class="card-text text-muted" style="font-size: 12px; margin-bottom: 8px;">Energetic beats to power your workout</p>
-                    </div>
-                    <div class="card-footer bg-transparent border-0" style="padding: 8px 12px;">
-                        <button class="btn btn-sm btn-outline-primary w-100" style="font-size: 12px; padding: 6px;">
-                            <i class="bi bi-play-fill"></i> Play Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-12" style="animation: slideInUp 0.5s; animation-delay: 0.4s; padding: 4px;">
-                <div class="card h-100 border-0 shadow-sm" style="transition: transform 0.3s ease; max-width: 100%;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop&crop=center&auto=format&q=80" class="card-img-top" alt="Minimal focused workspace - Focus Flow playlist cover" style="height: 160px; object-fit: cover;">
-                    <div class="card-body" style="padding: 12px;">
-                        <h5 class="card-title" style="font-size: 15px; margin-bottom: 6px;">Focus Flow</h5>
-                        <p class="card-text text-muted" style="font-size: 12px; margin-bottom: 8px;">Concentration-enhancing instrumental tracks</p>
-                    </div>
-                    <div class="card-footer bg-transparent border-0" style="padding: 8px 12px;">
-                        <button class="btn btn-sm btn-outline-primary w-100" style="font-size: 12px; padding: 6px;">
-                            <i class="bi bi-play-fill"></i> Play Now
-                        </button>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-
-        <h3 class="mb-2" style="animation: fadeIn 1s; padding-left: 8px; font-size: 1.4rem;">Popular Artists</h3>
-        <div class="row mb-4" style="margin-left: 4px; margin-right: 4px;">
-            <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center" style="animation: slideInUp 0.5s; animation-delay: 0.1s; padding: 4px;">
-                <div style="transition: transform 0.3s ease; max-width: 100%; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalTheCreator" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="assets\album-images\a1.jpg" class="rounded-circle mb-2" alt="Artist" style="width: 80px; height: 80px; object-fit: cover;">
-                    <h6 style="font-size: 13px; margin-bottom: 4px;">The Creator</h6>
-                    <span class="badge bg-success" style="font-size: 10px;">New Album</span>
-                </div>
+        <div
+          class="col-md-3 col-sm-6 col-12"
+          style="animation: slideInUp 0.5s; animation-delay: 0.2s; padding: 4px"
+        >
+          <div
+            class="card h-100 border-0 shadow-sm"
+            style="transition: transform 0.3s ease; max-width: 100%"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=400&fit=crop&crop=center&auto=format&q=80"
+              class="card-img-top"
+              alt="DJ turntable close-up - Hip Hop Hits playlist cover"
+              style="height: 160px; object-fit: cover"
+            />
+            <div class="card-body" style="padding: 12px">
+              <h5
+                class="card-title"
+                style="font-size: 15px; margin-bottom: 6px"
+              >
+                Hip Hop Hits
+              </h5>
+              <p
+                class="card-text text-muted"
+                style="font-size: 12px; margin-bottom: 8px"
+              >
+                The latest and greatest in hip hop
+              </p>
             </div>
-            <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center slide-in-up" style="animation-delay: 0.2s; padding: 4px;">
-                <div style="transition: transform 0.3s ease; max-width: 100%; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal21Savage" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="assets\album-images\a2.jpg" class="rounded-circle mb-2" alt="Artist" style="width: 80px; height: 80px; object-fit: cover;">
-                    <h6 style="font-size: 13px; margin-bottom: 4px;">21 Savage</h6>
-                    <span class="badge bg-primary" style="font-size: 10px;">Trending</span>
-                </div>
+            <div
+              class="card-footer bg-transparent border-0"
+              style="padding: 8px 12px"
+            >
+              <button
+                class="btn btn-sm btn-outline-primary w-100"
+                style="font-size: 12px; padding: 6px"
+              >
+                <i class="bi bi-play-fill"></i> Play Now
+              </button>
             </div>
-            <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center slide-in-up" style="animation-delay: 0.3s; padding: 4px;">
-                <div style="transition: transform 0.3s ease; max-width: 100%; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modal6ix9ine" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="assets\album-images\a3.jpg" class="rounded-circle mb-2" alt="Artist" style="width: 80px; height: 80px; object-fit: cover;">
-                    <h6 style="font-size: 13px; margin-bottom: 4px;">6ix9ine</h6>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center slide-in-up" style="animation-delay: 0.4s; padding: 4px;">
-                <div style="transition: transform 0.3s ease; max-width: 100%; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalTravisScott" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="assets\album-images\a4.jpg" class="rounded-circle mb-2" alt="Artist" style="width: 80px; height: 80px; object-fit: cover;">
-                    <h6 style="font-size: 13px; margin-bottom: 4px;">Travis Scott</h6>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center slide-in-up" style="animation-delay: 0.5s; padding: 4px;">
-                <div style="transition: transform 0.3s ease; max-width: 100%; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalOBLADAET" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="assets\album-images\a5.jpg" class="rounded-circle mb-2" alt="Artist" style="width: 80px; height: 80px; object-fit: cover;">
-                    <h6 style="font-size: 13px; margin-bottom: 4px;">OBLADAET</h6>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-3 col-sm-4 col-6 text-center slide-in-up" style="animation-delay: 0.6s; padding: 4px;">
-                <div style="transition: transform 0.3s ease; max-width: 100%; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalOneheart" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <img src="assets\album-images\a6.jpg" class="rounded-circle mb-2" alt="Artist" style="width: 80px; height: 80px; object-fit: cover;">
-                    <h6 style="font-size: 13px; margin-bottom: 4px;">Oneheart</h6>
-                    <span class="badge bg-danger" style="font-size: 10px;">Hot</span>
-                </div>
-            </div>
+          </div>
         </div>
-
-        <h3 class="mb-2" style="animation: fadeIn 1s; padding-left: 8px; font-size: 1.4rem;">Explore Genres</h3>
-                <div class="row" style="margin-left: 4px; margin-right: 4px;">
-                        <div class="col-md-4 col-sm-6" style="animation: slideInUp 0.5s; animation-delay: 0.1s; padding: 4px;">
-                                <div class="card text-white border-0" data-bs-toggle="modal" data-bs-target="#modalHipHop" style="cursor:pointer;background: linear-gradient(135deg, #ff6b6b, #ff8e53); height: 150px; transition: transform 0.3s ease; margin-bottom: 8px; border-radius: 10px; margin-left: 10px; margin-right: 10px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" tabindex="0" role="button" aria-label="View Hip Hop songs">
-                                        <div class="card-body d-flex align-items-center justify-content-center" style="padding: 12px;">
-                                                <h4 class="card-title m-0" style="font-size: 1.3rem; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Hip Hop</h4>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6" style="animation: slideInUp 0.5s; animation-delay: 0.2s; padding: 4px;">
-                                <div class="card text-white border-0" data-bs-toggle="modal" data-bs-target="#modalPop" style="cursor:pointer;background: linear-gradient(135deg, #4ecdc4, #44a08d); height: 150px; transition: transform 0.3s ease; margin-bottom: 8px; border-radius: 10px; margin-left: 10px; margin-right: 10px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" tabindex="0" role="button" aria-label="View Pop songs">
-                                        <div class="card-body d-flex align-items-center justify-content-center" style="padding: 12px;">
-                                                <h4 class="card-title m-0" style="font-size: 1.3rem; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Pop</h4>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6" style="animation: slideInUp 0.5s; animation-delay: 0.3s; padding: 4px;">
-                                <div class="card text-white border-0" data-bs-toggle="modal" data-bs-target="#modalRock" style="cursor:pointer;background: linear-gradient(135deg, #667eea, #764ba2); height: 150px; transition: transform 0.3s ease; margin-bottom: 8px; border-radius: 10px; margin-left: 10px; margin-right: 10px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" tabindex="0" role="button" aria-label="View Rock songs">
-                                        <div class="card-body d-flex align-items-center justify-content-center" style="padding: 12px;">
-                                                <h4 class="card-title m-0" style="font-size: 1.3rem; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Rock</h4>
-                                        </div>
-                                </div>
-                        </div>
-            <div class="col-md-4 col-sm-6" style="animation: slideInUp 0.5s; animation-delay: 0.4s; padding: 4px;">
-                <div class="card text-white border-0" data-bs-toggle="modal" data-bs-target="#modalFolk" style="cursor:pointer;background: linear-gradient(135deg, #ffecd2, #fcb69f); height: 150px; transition: transform 0.3s ease; margin-bottom: 8px; border-radius: 10px; margin-left: 10px; margin-right: 10px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" tabindex="0" role="button" aria-label="View Folk songs">
-                    <div class="card-body d-flex align-items-center justify-content-center" style="padding: 12px;">
-                        <h4 class="card-title m-0" style="font-size: 1.3rem; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Folk</h4>
-                    </div>
-                </div>
+        <div
+          class="col-md-3 col-sm-6 col-12"
+          style="animation: slideInUp 0.5s; animation-delay: 0.3s; padding: 4px"
+        >
+          <div
+            class="card h-100 border-0 shadow-sm"
+            style="transition: transform 0.3s ease; max-width: 100%"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=400&fit=crop&crop=center&auto=format&q=80"
+              class="card-img-top"
+              alt="Kettlebells in gym - Workout Mix playlist cover"
+              style="height: 160px; object-fit: cover"
+            />
+            <div class="card-body" style="padding: 12px">
+              <h5
+                class="card-title"
+                style="font-size: 15px; margin-bottom: 6px"
+              >
+                Workout Mix
+              </h5>
+              <p
+                class="card-text text-muted"
+                style="font-size: 12px; margin-bottom: 8px"
+              >
+                Energetic beats to power your workout
+              </p>
             </div>
-                        <div class="col-md-4 col-sm-6" style="animation: slideInUp 0.5s; animation-delay: 0.5s; padding: 4px;">
-                                <div class="card text-white border-0" data-bs-toggle="modal" data-bs-target="#modalJazz" style="cursor:pointer;background: linear-gradient(135deg, #a8edea, #fed6e3); height: 150px; transition: transform 0.3s ease; margin-bottom: 8px; border-radius: 10px; margin-left: 10px; margin-right: 10px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" tabindex="0" role="button" aria-label="View Jazz songs">
-                                        <div class="card-body d-flex align-items-center justify-content-center" style="padding: 12px;">
-                                                <h4 class="card-title m-0" style="font-size: 1.3rem; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Jazz</h4>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6" style="animation: slideInUp 0.5s; animation-delay: 0.6s; padding: 4px;">
-                                <div class="card text-white border-0" data-bs-toggle="modal" data-bs-target="#modalClassical" style="cursor:pointer;background: linear-gradient(135deg, #d299c2, #fef9d7); height: 150px; transition: transform 0.3s ease; margin-bottom: 8px; border-radius: 10px; margin-left: 10px; margin-right: 10px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" tabindex="0" role="button" aria-label="View Classical songs">
-                                        <div class="card-body d-flex align-items-center justify-content-center" style="padding: 12px;">
-                                                <h4 class="card-title m-0" style="font-size: 1.3rem; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Classical</h4>
-                                        </div>
-                                </div>
-                        </div>
-                </div>
-                <!-- Static genre modals (pure Bootstrap, no custom JS) -->
-                <div class="modal fade" id="modalHipHop" tabindex="-1" aria-labelledby="modalHipHopLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalHipHopLabel">Hip Hop Songs</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                                <ul class="list-group list-group-flush small mb-2">
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Mere+Gully+Mein+DIVINE+Naezy">Mere Gully Mein – DIVINE &amp; Naezy</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Jungli+Sher+DIVINE">Jungli Sher – DIVINE</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Asli+Hip+Hop+Gully+Boy">Asli Hip Hop – (Gully Boy)</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Kaam+25+DIVINE">Kaam 25 – DIVINE</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Mirchi+DIVINE+Stylo+G+MC+Altaf">Mirchi – DIVINE, Stylo G, MC Altaf</a></li>
-                                                </ul>
-                            </div>
-                            <div class="modal-footer py-2">
-                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="modalPop" tabindex="-1" aria-labelledby="modalPopLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalPopLabel">Pop Songs</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                                <ul class="list-group list-group-flush small mb-2">
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Kesariya+Arijit+Singh">Kesariya – Arijit Singh</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Tum+Hi+Ho+Arijit+Singh">Tum Hi Ho – Arijit Singh</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Raatan+Lambiyan">Raatan Lambiyan – Jubin Nautiyal, Asees Kaur</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Apna+Bana+Le">Apna Bana Le – Arijit Singh</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Tera+Yaar+Hoon+Main">Tera Yaar Hoon Main – Arijit Singh</a></li>
-                                                </ul>
-                            </div>
-                            <div class="modal-footer py-2">
-                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="modalRock" tabindex="-1" aria-labelledby="modalRockLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalRockLabel">Rock Songs</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                                <ul class="list-group list-group-flush small mb-2">
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=But+It+Rained+Parikrama">But It Rained – Parikrama</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Bandeh+Indian+Ocean">Bandeh – Indian Ocean</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Maeri+Euphoria">Maeri – Euphoria</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Dooba+Dooba+Silk+Route">Dooba Dooba – Silk Route</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Dil+Chahta+Hai+Title+Song">Dil Chahta Hai (Title) – Shankar-Ehsaan-Loy</a></li>
-                                                </ul>
-                            </div>
-                            <div class="modal-footer py-2">
-                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="modalFolk" tabindex="-1" aria-labelledby="modalFolkLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalFolkLabel">Folk Songs</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                                <ul class="list-group list-group-flush small mb-2">
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Kesariya+Balam">Kesariya Balam – Traditional (Rajasthan)</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Ghoomar+song">Ghoomar – Traditional (Rajasthan)</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Nimbooda+Nimbooda">Nimbooda Nimbooda – Folk (Rajasthan)</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Dama+Dam+Mast+Qalandar">Dama Dam Mast Qalandar – Sufi/Folk</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Bole+Chudiyan">Bole Chudiyan – Bollywood Folk Fusion</a></li>
-                                                </ul>
-                            </div>
-                            <div class="modal-footer py-2">
-                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="modalJazz" tabindex="-1" aria-labelledby="modalJazzLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalJazzLabel">Jazz Songs</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                                <ul class="list-group list-group-flush small mb-2">
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Breathing+Under+Water+Anoushka+Shankar">Breathing Under Water – Anoushka Shankar</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Lotus+Feet+Shakti">Lotus Feet – Shakti</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Giriraj+Sudha+A+R+Rahman">Giriraj Sudha – A.R. Rahman</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Desert+Rain+Indian+Ocean">Desert Rain – Indian Ocean</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Al+Bela+Sajan+Coke+Studio+India">Al Bela Sajan – Coke Studio India</a></li>
-                                                </ul>
-                            </div>
-                            <div class="modal-footer py-2">
-                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="modalClassical" tabindex="-1" aria-labelledby="modalClassicalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalClassicalLabel">Classical Songs</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                                <ul class="list-group list-group-flush small mb-2">
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Raga+Jog+Pandit+Ravi+Shankar">Raga Jog – Pandit Ravi Shankar</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Bhimpalasi+Ustad+Rashid+Khan">Bhimpalasi – Ustad Rashid Khan</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Krishna+Nee+Begane+Mandolin+Srinivas">Krishna Nee Begane – Mandolin U. Srinivas</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Vatapi+Ganapatim+MS+Subbulakshmi">Vatapi Ganapatim – M.S. Subbulakshmi</a></li>
-                                                    <li class="list-group-item"><a class="d-block text-decoration-none text-reset" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Raga+Kafi+Ustad+Bismillah+Khan">Raga Kafi – Ustad Bismillah Khan</a></li>
-                                                </ul>
-                            </div>
-                            <div class="modal-footer py-2">
-                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                                <!-- Artist Modals (Top 10 songs) -->
-                                <!-- The Creator Modal -->
-                                <div class="modal fade" id="modalTheCreator" tabindex="-1" aria-labelledby="modalTheCreatorLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="modalTheCreatorLabel">The Creator — Top Tracks</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <ul class="list-group list-group-flush small">
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=The+Creator+Industry+Baby" class="text-decoration-none">1. Industry Baby</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=The+Creator+Stay" class="text-decoration-none">2. Stay</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=The+Creator+Call+Me+By+Your+Name" class="text-decoration-none">3. Call Me By Your Name</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=The+Creator+Old+Town+Road" class="text-decoration-none">4. Old Town Road</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=The+Creator+Panini" class="text-decoration-none">5. Panini</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=The+Creator+Montero" class="text-decoration-none">6. Montero</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=The+Creator+Sun+Goes+Down" class="text-decoration-none">7. Sun Goes Down</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=The+Creator+Holiday" class="text-decoration-none">8. Holiday</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=The+Creator+Thats+What+I+Want" class="text-decoration-none">9. That's What I Want</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=The+Creator+Lost+In+The+Citadel" class="text-decoration-none">10. Lost In The Citadel</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary">Play All</button>
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 21 Savage Modal -->
-                                <div class="modal fade" id="modal21Savage" tabindex="-1" aria-labelledby="modal21SavageLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="modal21SavageLabel">21 Savage • Top 10 Songs</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <ul class="list-group list-group-flush small">
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=21+Savage+Bank+Account" class="text-decoration-none">1. Bank Account</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=21+Savage+X+feat+Future" class="text-decoration-none">2. X (feat. Future)</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=21+Savage+Rockstar+Post+Malone" class="text-decoration-none">3. Rockstar (with Post Malone)</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=21+Savage+A+Lot" class="text-decoration-none">4. A Lot</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=21+Savage+Jimmy+Cooks+Drake" class="text-decoration-none">5. Jimmy Cooks (with Drake)</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=21+Savage+Knife+Talk+Drake" class="text-decoration-none">6. Knife Talk (with Drake)</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=21+Savage+No+Heart" class="text-decoration-none">7. No Heart</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=21+Savage+Red+Opps" class="text-decoration-none">8. Red Opps</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=21+Savage+Mr+Right+Now" class="text-decoration-none">9. Mr. Right Now</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=21+Savage+Immortal" class="text-decoration-none">10. Immortal</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="modal-footer py-2">
-                                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-play-fill"></i> Play All</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" id="modal6ix9ine" tabindex="-1" aria-labelledby="modal6ix9ineLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="modal6ix9ineLabel">6ix9ine • Top 10 Songs</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <ul class="list-group list-group-flush small">
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=6ix9ine+GOOBA" class="text-decoration-none">1. GOOBA</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=6ix9ine+TROLLZ+Nicki+Minaj" class="text-decoration-none">2. TROLLZ (feat. Nicki Minaj)</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=6ix9ine+FEFE+Nicki+Minaj" class="text-decoration-none">3. FEFE (feat. Nicki Minaj)</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=6ix9ine+BEBE+Anuel+AA" class="text-decoration-none">4. BEBE (feat. Anuel AA)</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=6ix9ine+STOOPID+Bobby+Shmurda" class="text-decoration-none">5. STOOPID (feat. Bobby Shmurda)</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=6ix9ine+KOODA" class="text-decoration-none">6. KOODA</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=6ix9ine+GUMMO" class="text-decoration-none">7. GUMMO</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=6ix9ine+BILLY" class="text-decoration-none">8. BILLY</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=6ix9ine+MAMA+Nicki+Minaj+Kanye" class="text-decoration-none">9. MAMA (feat. Nicki Minaj &amp; Kanye West)</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=6ix9ine+ZAZA" class="text-decoration-none">10. ZAZA</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="modal-footer py-2">
-                                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-play-fill"></i> Play All</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" id="modalTravisScott" tabindex="-1" aria-labelledby="modalTravisScottLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="modalTravisScottLabel">Travis Scott • Top 10 Songs</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <ul class="list-group list-group-flush small">
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Travis+Scott+SICKO+MODE" class="text-decoration-none">1. SICKO MODE</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Travis+Scott+Goosebumps" class="text-decoration-none">2. Goosebumps</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Travis+Scott+Antidote" class="text-decoration-none">3. Antidote</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Travis+Scott+Highest+In+The+Room" class="text-decoration-none">4. Highest In The Room</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Travis+Scott+Butterfly+Effect" class="text-decoration-none">5. Butterfly Effect</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Travis+Scott+90210" class="text-decoration-none">6. 90210</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Travis+Scott+Stargazing" class="text-decoration-none">7. Stargazing</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Travis+Scott+Pick+Up+The+Phone" class="text-decoration-none">8. Pick Up The Phone</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Travis+Scott+3500" class="text-decoration-none">9. 3500</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Travis+Scott+Franchise" class="text-decoration-none">10. Franchise</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="modal-footer py-2">
-                                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-play-fill"></i> Play All</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" id="modalOBLADAET" tabindex="-1" aria-labelledby="modalOBLADAETLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="modalOBLADAETLabel">OBLADAET • Top 10 Songs</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <ul class="list-group list-group-flush small">
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=OBLADAET+FLEX" class="text-decoration-none">1. FLEX</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=OBLADAET+Hotline" class="text-decoration-none">2. Hotline</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=OBLADAET+Smoke" class="text-decoration-none">3. Smoke</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=OBLADAET+Money+Rain" class="text-decoration-none">4. Money Rain</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=OBLADAET+Kamikadze" class="text-decoration-none">5. Kamikadze</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=OBLADAET+Flip+Phone" class="text-decoration-none">6. Flip Phone</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=OBLADAET+Tokyo+Drift" class="text-decoration-none">7. Tokyo Drift</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=OBLADAET+Rockstar" class="text-decoration-none">8. Rockstar</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=OBLADAET+Adidas" class="text-decoration-none">9. Adidas</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=OBLADAET+Bankroll" class="text-decoration-none">10. Bankroll</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="modal-footer py-2">
-                                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-play-fill"></i> Play All</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" id="modalOneheart" tabindex="-1" aria-labelledby="modalOneheartLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="modalOneheartLabel">Oneheart • Top 10 Songs</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <ul class="list-group list-group-flush small">
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Oneheart+Snowfall" class="text-decoration-none">1. Snowfall</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Oneheart+Therapy" class="text-decoration-none">2. Therapy</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Oneheart+Look+Im+Here" class="text-decoration-none">3. Look I'm Here</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Oneheart+Apathy" class="text-decoration-none">4. Apathy</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Oneheart+Call+You+Mine" class="text-decoration-none">5. Call You Mine</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Oneheart+Hurt" class="text-decoration-none">6. Hurt</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Oneheart+Distance" class="text-decoration-none">7. Distance</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Oneheart+Watching+The+Stars" class="text-decoration-none">8. Watching The Stars</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Oneheart+Nightfall" class="text-decoration-none">9. Nightfall</a></li>
-                                                    <li class="list-group-item"><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=Oneheart+Dreaming" class="text-decoration-none">10. Dreaming</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="modal-footer py-2">
-                                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-play-fill"></i> Play All</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+            <div
+              class="card-footer bg-transparent border-0"
+              style="padding: 8px 12px"
+            >
+              <button
+                class="btn btn-sm btn-outline-primary w-100"
+                style="font-size: 12px; padding: 6px"
+              >
+                <i class="bi bi-play-fill"></i> Play Now
+              </button>
+            </div>
+          </div>
         </div>
+        <div
+          class="col-md-3 col-sm-6 col-12"
+          style="animation: slideInUp 0.5s; animation-delay: 0.4s; padding: 4px"
+        >
+          <div
+            class="card h-100 border-0 shadow-sm"
+            style="transition: transform 0.3s ease; max-width: 100%"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop&crop=center&auto=format&q=80"
+              class="card-img-top"
+              alt="Minimal focused workspace - Focus Flow playlist cover"
+              style="height: 160px; object-fit: cover"
+            />
+            <div class="card-body" style="padding: 12px">
+              <h5
+                class="card-title"
+                style="font-size: 15px; margin-bottom: 6px"
+              >
+                Focus Flow
+              </h5>
+              <p
+                class="card-text text-muted"
+                style="font-size: 12px; margin-bottom: 8px"
+              >
+                Concentration-enhancing instrumental tracks
+              </p>
+            </div>
+            <div
+              class="card-footer bg-transparent border-0"
+              style="padding: 8px 12px"
+            >
+              <button
+                class="btn btn-sm btn-outline-primary w-100"
+                style="font-size: 12px; padding: 6px"
+              >
+                <i class="bi bi-play-fill"></i> Play Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+      <h3
+        class="mb-2"
+        style="animation: fadeIn 1s; padding-left: 8px; font-size: 1.4rem"
+      >
+        Popular Artists
+      </h3>
+      <div class="row mb-4" style="margin-left: 4px; margin-right: 4px">
+        <div
+          class="col-lg-2 col-md-3 col-sm-4 col-6 text-center"
+          style="animation: slideInUp 0.5s; animation-delay: 0.1s; padding: 4px"
+        >
+          <div
+            style="
+              transition: transform 0.3s ease;
+              max-width: 100%;
+              cursor: pointer;
+            "
+            data-bs-toggle="modal"
+            data-bs-target="#modalTheCreator"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+          >
+            <img
+              src="assets\album-images\a1.jpg"
+              class="rounded-circle mb-2"
+              alt="Artist"
+              style="width: 80px; height: 80px; object-fit: cover"
+            />
+            <h6 style="font-size: 13px; margin-bottom: 4px">The Creator</h6>
+            <span class="badge bg-success" style="font-size: 10px"
+              >New Album</span
+            >
+          </div>
+        </div>
+        <div
+          class="col-lg-2 col-md-3 col-sm-4 col-6 text-center slide-in-up"
+          style="animation-delay: 0.2s; padding: 4px"
+        >
+          <div
+            style="
+              transition: transform 0.3s ease;
+              max-width: 100%;
+              cursor: pointer;
+            "
+            data-bs-toggle="modal"
+            data-bs-target="#modal21Savage"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+          >
+            <img
+              src="assets\album-images\a2.jpg"
+              class="rounded-circle mb-2"
+              alt="Artist"
+              style="width: 80px; height: 80px; object-fit: cover"
+            />
+            <h6 style="font-size: 13px; margin-bottom: 4px">21 Savage</h6>
+            <span class="badge bg-primary" style="font-size: 10px"
+              >Trending</span
+            >
+          </div>
+        </div>
+        <div
+          class="col-lg-2 col-md-3 col-sm-4 col-6 text-center slide-in-up"
+          style="animation-delay: 0.3s; padding: 4px"
+        >
+          <div
+            style="
+              transition: transform 0.3s ease;
+              max-width: 100%;
+              cursor: pointer;
+            "
+            data-bs-toggle="modal"
+            data-bs-target="#modal6ix9ine"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+          >
+            <img
+              src="assets\album-images\a3.jpg"
+              class="rounded-circle mb-2"
+              alt="Artist"
+              style="width: 80px; height: 80px; object-fit: cover"
+            />
+            <h6 style="font-size: 13px; margin-bottom: 4px">6ix9ine</h6>
+          </div>
+        </div>
+        <div
+          class="col-lg-2 col-md-3 col-sm-4 col-6 text-center slide-in-up"
+          style="animation-delay: 0.4s; padding: 4px"
+        >
+          <div
+            style="
+              transition: transform 0.3s ease;
+              max-width: 100%;
+              cursor: pointer;
+            "
+            data-bs-toggle="modal"
+            data-bs-target="#modalTravisScott"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+          >
+            <img
+              src="assets\album-images\a4.jpg"
+              class="rounded-circle mb-2"
+              alt="Artist"
+              style="width: 80px; height: 80px; object-fit: cover"
+            />
+            <h6 style="font-size: 13px; margin-bottom: 4px">Travis Scott</h6>
+          </div>
+        </div>
+        <div
+          class="col-lg-2 col-md-3 col-sm-4 col-6 text-center slide-in-up"
+          style="animation-delay: 0.5s; padding: 4px"
+        >
+          <div
+            style="
+              transition: transform 0.3s ease;
+              max-width: 100%;
+              cursor: pointer;
+            "
+            data-bs-toggle="modal"
+            data-bs-target="#modalOBLADAET"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+          >
+            <img
+              src="assets\album-images\a5.jpg"
+              class="rounded-circle mb-2"
+              alt="Artist"
+              style="width: 80px; height: 80px; object-fit: cover"
+            />
+            <h6 style="font-size: 13px; margin-bottom: 4px">OBLADAET</h6>
+          </div>
+        </div>
+        <div
+          class="col-lg-2 col-md-3 col-sm-4 col-6 text-center slide-in-up"
+          style="animation-delay: 0.6s; padding: 4px"
+        >
+          <div
+            style="
+              transition: transform 0.3s ease;
+              max-width: 100%;
+              cursor: pointer;
+            "
+            data-bs-toggle="modal"
+            data-bs-target="#modalOneheart"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+          >
+            <img
+              src="assets\album-images\a6.jpg"
+              class="rounded-circle mb-2"
+              alt="Artist"
+              style="width: 80px; height: 80px; object-fit: cover"
+            />
+            <h6 style="font-size: 13px; margin-bottom: 4px">Oneheart</h6>
+            <span class="badge bg-danger" style="font-size: 10px">Hot</span>
+          </div>
+        </div>
+      </div>
+
+      <h3
+        class="mb-2"
+        style="animation: fadeIn 1s; padding-left: 8px; font-size: 1.4rem"
+      >
+        Explore Genres
+      </h3>
+      <div class="row" style="margin-left: 4px; margin-right: 4px">
+        <div
+          class="col-md-4 col-sm-6"
+          style="animation: slideInUp 0.5s; animation-delay: 0.1s; padding: 4px"
+        >
+          <div
+            class="card text-white border-0"
+            data-bs-toggle="modal"
+            data-bs-target="#modalHipHop"
+            style="
+              cursor: pointer;
+              background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+              height: 150px;
+              transition: transform 0.3s ease;
+              margin-bottom: 8px;
+              border-radius: 10px;
+              margin-left: 10px;
+              margin-right: 10px;
+            "
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+            tabindex="0"
+            role="button"
+            aria-label="View Hip Hop songs"
+          >
+            <div
+              class="card-body d-flex align-items-center justify-content-center"
+              style="padding: 12px"
+            >
+              <h4
+                class="card-title m-0"
+                style="
+                  font-size: 1.3rem;
+                  font-weight: 600;
+                  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+                "
+              >
+                Hip Hop
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-md-4 col-sm-6"
+          style="animation: slideInUp 0.5s; animation-delay: 0.2s; padding: 4px"
+        >
+          <div
+            class="card text-white border-0"
+            data-bs-toggle="modal"
+            data-bs-target="#modalPop"
+            style="
+              cursor: pointer;
+              background: linear-gradient(135deg, #4ecdc4, #44a08d);
+              height: 150px;
+              transition: transform 0.3s ease;
+              margin-bottom: 8px;
+              border-radius: 10px;
+              margin-left: 10px;
+              margin-right: 10px;
+            "
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+            tabindex="0"
+            role="button"
+            aria-label="View Pop songs"
+          >
+            <div
+              class="card-body d-flex align-items-center justify-content-center"
+              style="padding: 12px"
+            >
+              <h4
+                class="card-title m-0"
+                style="
+                  font-size: 1.3rem;
+                  font-weight: 600;
+                  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+                "
+              >
+                Pop
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-md-4 col-sm-6"
+          style="animation: slideInUp 0.5s; animation-delay: 0.3s; padding: 4px"
+        >
+          <div
+            class="card text-white border-0"
+            data-bs-toggle="modal"
+            data-bs-target="#modalRock"
+            style="
+              cursor: pointer;
+              background: linear-gradient(135deg, #667eea, #764ba2);
+              height: 150px;
+              transition: transform 0.3s ease;
+              margin-bottom: 8px;
+              border-radius: 10px;
+              margin-left: 10px;
+              margin-right: 10px;
+            "
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+            tabindex="0"
+            role="button"
+            aria-label="View Rock songs"
+          >
+            <div
+              class="card-body d-flex align-items-center justify-content-center"
+              style="padding: 12px"
+            >
+              <h4
+                class="card-title m-0"
+                style="
+                  font-size: 1.3rem;
+                  font-weight: 600;
+                  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+                "
+              >
+                Rock
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-md-4 col-sm-6"
+          style="animation: slideInUp 0.5s; animation-delay: 0.4s; padding: 4px"
+        >
+          <div
+            class="card text-white border-0"
+            data-bs-toggle="modal"
+            data-bs-target="#modalFolk"
+            style="
+              cursor: pointer;
+              background: linear-gradient(135deg, #ffecd2, #fcb69f);
+              height: 150px;
+              transition: transform 0.3s ease;
+              margin-bottom: 8px;
+              border-radius: 10px;
+              margin-left: 10px;
+              margin-right: 10px;
+            "
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+            tabindex="0"
+            role="button"
+            aria-label="View Folk songs"
+          >
+            <div
+              class="card-body d-flex align-items-center justify-content-center"
+              style="padding: 12px"
+            >
+              <h4
+                class="card-title m-0"
+                style="
+                  font-size: 1.3rem;
+                  font-weight: 600;
+                  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+                "
+              >
+                Folk
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-md-4 col-sm-6"
+          style="animation: slideInUp 0.5s; animation-delay: 0.5s; padding: 4px"
+        >
+          <div
+            class="card text-white border-0"
+            data-bs-toggle="modal"
+            data-bs-target="#modalJazz"
+            style="
+              cursor: pointer;
+              background: linear-gradient(135deg, #a8edea, #fed6e3);
+              height: 150px;
+              transition: transform 0.3s ease;
+              margin-bottom: 8px;
+              border-radius: 10px;
+              margin-left: 10px;
+              margin-right: 10px;
+            "
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+            tabindex="0"
+            role="button"
+            aria-label="View Jazz songs"
+          >
+            <div
+              class="card-body d-flex align-items-center justify-content-center"
+              style="padding: 12px"
+            >
+              <h4
+                class="card-title m-0"
+                style="
+                  font-size: 1.3rem;
+                  font-weight: 600;
+                  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+                "
+              >
+                Jazz
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-md-4 col-sm-6"
+          style="animation: slideInUp 0.5s; animation-delay: 0.6s; padding: 4px"
+        >
+          <div
+            class="card text-white border-0"
+            data-bs-toggle="modal"
+            data-bs-target="#modalClassical"
+            style="
+              cursor: pointer;
+              background: linear-gradient(135deg, #d299c2, #fef9d7);
+              height: 150px;
+              transition: transform 0.3s ease;
+              margin-bottom: 8px;
+              border-radius: 10px;
+              margin-left: 10px;
+              margin-right: 10px;
+            "
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+            tabindex="0"
+            role="button"
+            aria-label="View Classical songs"
+          >
+            <div
+              class="card-body d-flex align-items-center justify-content-center"
+              style="padding: 12px"
+            >
+              <h4
+                class="card-title m-0"
+                style="
+                  font-size: 1.3rem;
+                  font-weight: 600;
+                  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+                "
+              >
+                Classical
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="modalHipHop"
+        tabindex="-1"
+        aria-labelledby="modalHipHopLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalHipHopLabel">Hip Hop Songs</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group list-group-flush small mb-2">
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Mere+Gully+Mein+DIVINE+Naezy"
+                    >Mere Gully Mein – DIVINE &amp; Naezy</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Jungli+Sher+DIVINE"
+                    >Jungli Sher – DIVINE</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Asli+Hip+Hop+Gully+Boy"
+                    >Asli Hip Hop – (Gully Boy)</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Kaam+25+DIVINE"
+                    >Kaam 25 – DIVINE</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Mirchi+DIVINE+Stylo+G+MC+Altaf"
+                    >Mirchi – DIVINE, Stylo G, MC Altaf</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer py-2">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="modalPop"
+        tabindex="-1"
+        aria-labelledby="modalPopLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalPopLabel">Pop Songs</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group list-group-flush small mb-2">
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Kesariya+Arijit+Singh"
+                    >Kesariya – Arijit Singh</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Tum+Hi+Ho+Arijit+Singh"
+                    >Tum Hi Ho – Arijit Singh</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Raatan+Lambiyan"
+                    >Raatan Lambiyan – Jubin Nautiyal, Asees Kaur</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Apna+Bana+Le"
+                    >Apna Bana Le – Arijit Singh</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Tera+Yaar+Hoon+Main"
+                    >Tera Yaar Hoon Main – Arijit Singh</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer py-2">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="modalRock"
+        tabindex="-1"
+        aria-labelledby="modalRockLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalRockLabel">Rock Songs</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group list-group-flush small mb-2">
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=But+It+Rained+Parikrama"
+                    >But It Rained – Parikrama</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Bandeh+Indian+Ocean"
+                    >Bandeh – Indian Ocean</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Maeri+Euphoria"
+                    >Maeri – Euphoria</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Dooba+Dooba+Silk+Route"
+                    >Dooba Dooba – Silk Route</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Dil+Chahta+Hai+Title+Song"
+                    >Dil Chahta Hai (Title) – Shankar-Ehsaan-Loy</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer py-2">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="modalFolk"
+        tabindex="-1"
+        aria-labelledby="modalFolkLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalFolkLabel">Folk Songs</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group list-group-flush small mb-2">
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Kesariya+Balam"
+                    >Kesariya Balam – Traditional (Rajasthan)</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Ghoomar+song"
+                    >Ghoomar – Traditional (Rajasthan)</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Nimbooda+Nimbooda"
+                    >Nimbooda Nimbooda – Folk (Rajasthan)</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Dama+Dam+Mast+Qalandar"
+                    >Dama Dam Mast Qalandar – Sufi/Folk</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Bole+Chudiyan"
+                    >Bole Chudiyan – Bollywood Folk Fusion</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer py-2">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="modalJazz"
+        tabindex="-1"
+        aria-labelledby="modalJazzLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalJazzLabel">Jazz Songs</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group list-group-flush small mb-2">
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Breathing+Under+Water+Anoushka+Shankar"
+                    >Breathing Under Water – Anoushka Shankar</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Lotus+Feet+Shakti"
+                    >Lotus Feet – Shakti</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Giriraj+Sudha+A+R+Rahman"
+                    >Giriraj Sudha – A.R. Rahman</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Desert+Rain+Indian+Ocean"
+                    >Desert Rain – Indian Ocean</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Al+Bela+Sajan+Coke+Studio+India"
+                    >Al Bela Sajan – Coke Studio India</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer py-2">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="modalClassical"
+        tabindex="-1"
+        aria-labelledby="modalClassicalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalClassicalLabel">
+                Classical Songs
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group list-group-flush small mb-2">
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Raga+Jog+Pandit+Ravi+Shankar"
+                    >Raga Jog – Pandit Ravi Shankar</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Bhimpalasi+Ustad+Rashid+Khan"
+                    >Bhimpalasi – Ustad Rashid Khan</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Krishna+Nee+Begane+Mandolin+Srinivas"
+                    >Krishna Nee Begane – Mandolin U. Srinivas</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Vatapi+Ganapatim+MS+Subbulakshmi"
+                    >Vatapi Ganapatim – M.S. Subbulakshmi</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    class="d-block text-decoration-none text-reset"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Raga+Kafi+Ustad+Bismillah+Khan"
+                    >Raga Kafi – Ustad Bismillah Khan</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer py-2">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="modalTheCreator"
+        tabindex="-1"
+        aria-labelledby="modalTheCreatorLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTheCreatorLabel">
+                The Creator — Top Tracks
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group list-group-flush small">
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=The+Creator+Industry+Baby"
+                    class="text-decoration-none"
+                    >1. Industry Baby</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=The+Creator+Stay"
+                    class="text-decoration-none"
+                    >2. Stay</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=The+Creator+Call+Me+By+Your+Name"
+                    class="text-decoration-none"
+                    >3. Call Me By Your Name</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=The+Creator+Old+Town+Road"
+                    class="text-decoration-none"
+                    >4. Old Town Road</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=The+Creator+Panini"
+                    class="text-decoration-none"
+                    >5. Panini</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=The+Creator+Montero"
+                    class="text-decoration-none"
+                    >6. Montero</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=The+Creator+Sun+Goes+Down"
+                    class="text-decoration-none"
+                    >7. Sun Goes Down</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=The+Creator+Holiday"
+                    class="text-decoration-none"
+                    >8. Holiday</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=The+Creator+Thats+What+I+Want"
+                    class="text-decoration-none"
+                    >9. That's What I Want</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=The+Creator+Lost+In+The+Citadel"
+                    class="text-decoration-none"
+                    >10. Lost In The Citadel</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Play All</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="modal21Savage"
+        tabindex="-1"
+        aria-labelledby="modal21SavageLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal21SavageLabel">
+                21 Savage • Top 10 Songs
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group list-group-flush small">
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=21+Savage+Bank+Account"
+                    class="text-decoration-none"
+                    >1. Bank Account</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=21+Savage+X+feat+Future"
+                    class="text-decoration-none"
+                    >2. X (feat. Future)</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=21+Savage+Rockstar+Post+Malone"
+                    class="text-decoration-none"
+                    >3. Rockstar (with Post Malone)</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=21+Savage+A+Lot"
+                    class="text-decoration-none"
+                    >4. A Lot</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=21+Savage+Jimmy+Cooks+Drake"
+                    class="text-decoration-none"
+                    >5. Jimmy Cooks (with Drake)</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=21+Savage+Knife+Talk+Drake"
+                    class="text-decoration-none"
+                    >6. Knife Talk (with Drake)</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=21+Savage+No+Heart"
+                    class="text-decoration-none"
+                    >7. No Heart</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=21+Savage+Red+Opps"
+                    class="text-decoration-none"
+                    >8. Red Opps</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=21+Savage+Mr+Right+Now"
+                    class="text-decoration-none"
+                    >9. Mr. Right Now</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=21+Savage+Immortal"
+                    class="text-decoration-none"
+                    >10. Immortal</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer py-2">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary btn-sm">
+                <i class="bi bi-play-fill"></i> Play All
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="modal6ix9ine"
+        tabindex="-1"
+        aria-labelledby="modal6ix9ineLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal6ix9ineLabel">
+                6ix9ine • Top 10 Songs
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group list-group-flush small">
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=6ix9ine+GOOBA"
+                    class="text-decoration-none"
+                    >1. GOOBA</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=6ix9ine+TROLLZ+Nicki+Minaj"
+                    class="text-decoration-none"
+                    >2. TROLLZ (feat. Nicki Minaj)</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=6ix9ine+FEFE+Nicki+Minaj"
+                    class="text-decoration-none"
+                    >3. FEFE (feat. Nicki Minaj)</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=6ix9ine+BEBE+Anuel+AA"
+                    class="text-decoration-none"
+                    >4. BEBE (feat. Anuel AA)</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=6ix9ine+STOOPID+Bobby+Shmurda"
+                    class="text-decoration-none"
+                    >5. STOOPID (feat. Bobby Shmurda)</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=6ix9ine+KOODA"
+                    class="text-decoration-none"
+                    >6. KOODA</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=6ix9ine+GUMMO"
+                    class="text-decoration-none"
+                    >7. GUMMO</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=6ix9ine+BILLY"
+                    class="text-decoration-none"
+                    >8. BILLY</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=6ix9ine+MAMA+Nicki+Minaj+Kanye"
+                    class="text-decoration-none"
+                    >9. MAMA (feat. Nicki Minaj &amp; Kanye West)</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=6ix9ine+ZAZA"
+                    class="text-decoration-none"
+                    >10. ZAZA</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer py-2">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary btn-sm">
+                <i class="bi bi-play-fill"></i> Play All
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="modalTravisScott"
+        tabindex="-1"
+        aria-labelledby="modalTravisScottLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTravisScottLabel">
+                Travis Scott • Top 10 Songs
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group list-group-flush small">
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Travis+Scott+SICKO+MODE"
+                    class="text-decoration-none"
+                    >1. SICKO MODE</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Travis+Scott+Goosebumps"
+                    class="text-decoration-none"
+                    >2. Goosebumps</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Travis+Scott+Antidote"
+                    class="text-decoration-none"
+                    >3. Antidote</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Travis+Scott+Highest+In+The+Room"
+                    class="text-decoration-none"
+                    >4. Highest In The Room</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Travis+Scott+Butterfly+Effect"
+                    class="text-decoration-none"
+                    >5. Butterfly Effect</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Travis+Scott+90210"
+                    class="text-decoration-none"
+                    >6. 90210</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Travis+Scott+Stargazing"
+                    class="text-decoration-none"
+                    >7. Stargazing</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Travis+Scott+Pick+Up+The+Phone"
+                    class="text-decoration-none"
+                    >8. Pick Up The Phone</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Travis+Scott+3500"
+                    class="text-decoration-none"
+                    >9. 3500</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Travis+Scott+Franchise"
+                    class="text-decoration-none"
+                    >10. Franchise</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer py-2">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary btn-sm">
+                <i class="bi bi-play-fill"></i> Play All
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="modalOBLADAET"
+        tabindex="-1"
+        aria-labelledby="modalOBLADAETLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalOBLADAETLabel">
+                OBLADAET • Top 10 Songs
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group list-group-flush small">
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=OBLADAET+FLEX"
+                    class="text-decoration-none"
+                    >1. FLEX</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=OBLADAET+Hotline"
+                    class="text-decoration-none"
+                    >2. Hotline</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=OBLADAET+Smoke"
+                    class="text-decoration-none"
+                    >3. Smoke</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=OBLADAET+Money+Rain"
+                    class="text-decoration-none"
+                    >4. Money Rain</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=OBLADAET+Kamikadze"
+                    class="text-decoration-none"
+                    >5. Kamikadze</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=OBLADAET+Flip+Phone"
+                    class="text-decoration-none"
+                    >6. Flip Phone</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=OBLADAET+Tokyo+Drift"
+                    class="text-decoration-none"
+                    >7. Tokyo Drift</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=OBLADAET+Rockstar"
+                    class="text-decoration-none"
+                    >8. Rockstar</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=OBLADAET+Adidas"
+                    class="text-decoration-none"
+                    >9. Adidas</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=OBLADAET+Bankroll"
+                    class="text-decoration-none"
+                    >10. Bankroll</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer py-2">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary btn-sm">
+                <i class="bi bi-play-fill"></i> Play All
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="modalOneheart"
+        tabindex="-1"
+        aria-labelledby="modalOneheartLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalOneheartLabel">
+                Oneheart • Top 10 Songs
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group list-group-flush small">
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Oneheart+Snowfall"
+                    class="text-decoration-none"
+                    >1. Snowfall</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Oneheart+Therapy"
+                    class="text-decoration-none"
+                    >2. Therapy</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Oneheart+Look+Im+Here"
+                    class="text-decoration-none"
+                    >3. Look I'm Here</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Oneheart+Apathy"
+                    class="text-decoration-none"
+                    >4. Apathy</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Oneheart+Call+You+Mine"
+                    class="text-decoration-none"
+                    >5. Call You Mine</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Oneheart+Hurt"
+                    class="text-decoration-none"
+                    >6. Hurt</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Oneheart+Distance"
+                    class="text-decoration-none"
+                    >7. Distance</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Oneheart+Watching+The+Stars"
+                    class="text-decoration-none"
+                    >8. Watching The Stars</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Oneheart+Nightfall"
+                    class="text-decoration-none"
+                    >9. Nightfall</a
+                  >
+                </li>
+                <li class="list-group-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.google.com/search?q=Oneheart+Dreaming"
+                    class="text-decoration-none"
+                    >10. Dreaming</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer py-2">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary btn-sm">
+                <i class="bi bi-play-fill"></i> Play All
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+      integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
+      crossorigin="anonymous"
+    ></script>
     <script>
-        // Hide webkit scrollbars
-        const style = document.createElement('style');
-        style.textContent = `
+      const style = document.createElement("style");
+      style.textContent = `
             body::-webkit-scrollbar, *::-webkit-scrollbar { 
                 display: none !important; 
                 width: 0 !important; 
@@ -631,9 +2276,7 @@
                 -ms-overflow-style: none !important;
             }
         `;
-        document.head.appendChild(style);
-
-    // (Removed dynamic genre modal JS - using static Bootstrap modals instead)
+      document.head.appendChild(style);
     </script>
-</body>
+  </body>
 </html>
